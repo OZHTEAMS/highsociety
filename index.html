@@ -7,9 +7,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <meta name="apple-mobile-web-app-title" content="OZH Society"/>
   <meta name="mobile-web-app-capable" content="yes"/>
-  <meta name="theme-color" content="#050505"/>
-  <title>OZH Society — Elite Access</title>
-  <meta name="description" content="OZH Society — The most exclusive cannabis society in Latin America. Verified producers, premium market, global network."/>
+  <meta name="theme-color" content="#000000"/>
+  <title>OZH Society — Global</title>
+  <meta name="description" content="OZH Society — The world's most innovative cannabis community. Verified producers, global network, exclusive access."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -22,185 +22,157 @@
         extend: {
           colors: {
             gold: '#D4AF37',
-            'gold-dim': '#a88a1e',
-            'gold-light': '#f0d060',
-            'gold-pale': 'rgba(212,175,55,0.12)',
-            obsidian: '#050505',
-            'dark-1': '#0a0a0a',
-            'dark-2': '#111111',
-            'dark-3': '#1a1a1a',
-            bone: '#F5F0E8',
-            'bone-dim': 'rgba(245,240,232,0.45)',
+            'gold-dim': '#9a7e1e',
+            'gold-light': '#eece55',
+            obsidian: '#000000',
+            'surface': '#0a0a0a',
+            'surface-2': '#111111',
+            'surface-3': '#181818',
+            'surface-4': '#222222',
+            snow: '#FFFFFF',
+            'snow-60': 'rgba(255,255,255,0.6)',
+            'snow-30': 'rgba(255,255,255,0.3)',
+            'snow-10': 'rgba(255,255,255,0.1)',
+            'snow-06': 'rgba(255,255,255,0.06)',
+            'snow-03': 'rgba(255,255,255,0.03)',
           },
           fontFamily: {
             cinzel: ['Cinzel', 'serif'],
             mont: ['Montserrat', 'sans-serif'],
           },
-          boxShadow: {
-            gold: '0 0 0 1px rgba(212,175,55,0.3)',
-            'gold-glow': '0 0 24px rgba(212,175,55,0.18), 0 0 0 1px rgba(212,175,55,0.3)',
-            'gold-press': '0 0 12px rgba(212,175,55,0.35)',
-            glass: '0 8px 32px rgba(0,0,0,0.6)',
-          }
         }
       }
     }
   </script>
   <style>
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html, body { height: 100%; overscroll-behavior: none; }
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #050505;
-      color: #F5F0E8;
+      background: #000;
+      color: #fff;
       overflow: hidden;
     }
 
-    /* ─── SCROLLBAR ─── */
-    .scroll-area {
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-    }
+    /* ── SCROLLBAR ── */
+    .scroll-area { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
     .scroll-area::-webkit-scrollbar { display: none; }
     * { scrollbar-width: none; }
 
-    /* ─── GLASS ─── */
+    /* ── GLASS ── */
     .glass {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.04);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(212,175,55,0.14);
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    .glass-dark {
-      background: rgba(5,5,5,0.75);
+    .glass-gold {
+      background: rgba(212,175,55,0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212,175,55,0.22);
+    }
+    .glass-nav {
+      background: rgba(0,0,0,0.7);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(212,175,55,0.1);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .glass-hover {
-      transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
-    }
-    .glass-hover:active {
-      background: rgba(212,175,55,0.06);
-      border-color: rgba(212,175,55,0.35);
-      box-shadow: 0 0 18px rgba(212,175,55,0.12);
+    .glass-top {
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* ─── GOLD BORDER NEON ─── */
-    .border-gold-neon {
-      border: 1px solid rgba(212,175,55,0.3);
-      box-shadow: 0 0 14px rgba(212,175,55,0.07), inset 0 0 14px rgba(212,175,55,0.02);
-    }
-
-    /* ─── TYPOGRAPHY ─── */
+    /* ── TYPOGRAPHY ── */
     .cinzel { font-family: 'Cinzel', serif; }
     .mont { font-family: 'Montserrat', sans-serif; }
     .text-gold-grad {
-      background: linear-gradient(135deg, #D4AF37 0%, #f0d060 50%, #a88a1e 100%);
+      background: linear-gradient(135deg, #D4AF37 0%, #f0d060 50%, #9a7e1e 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes glowPulse {
-      0%, 100% { opacity: 0.55; box-shadow: 0 0 4px rgba(212,175,55,0.4); }
-      50%       { opacity: 1;    box-shadow: 0 0 10px rgba(212,175,55,0.9); }
-    }
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-5px); }
-    }
-    @keyframes orb {
-      0%   { transform: scale(1) rotate(0deg); opacity: 0.6; }
-      50%  { transform: scale(1.15) rotate(180deg); opacity: 1; }
-      100% { transform: scale(1) rotate(360deg); opacity: 0.6; }
-    }
-    @keyframes scanline {
-      0%   { transform: translateY(-100%); }
-      100% { transform: translateY(100vh); }
-    }
-    @keyframes pressGold {
-      0%   { box-shadow: 0 0 0 rgba(212,175,55,0); }
-      50%  { box-shadow: 0 0 22px rgba(212,175,55,0.4); }
-      100% { box-shadow: 0 0 0 rgba(212,175,55,0); }
-    }
-
-    .animate-fade-up   { animation: fadeUp 0.65s cubic-bezier(.22,1,.36,1) both; }
-    .animate-fade-up-2 { animation: fadeUp 0.65s 0.12s cubic-bezier(.22,1,.36,1) both; }
-    .animate-fade-up-3 { animation: fadeUp 0.65s 0.24s cubic-bezier(.22,1,.36,1) both; }
-    .animate-fade-up-4 { animation: fadeUp 0.65s 0.36s cubic-bezier(.22,1,.36,1) both; }
-    .glow-pulse { animation: glowPulse 2.2s ease-in-out infinite; }
-    .shimmer-bg {
-      background: linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.07) 50%, rgba(212,175,55,0) 100%);
-      background-size: 200% 100%;
-      animation: shimmer 2.8s infinite;
-    }
-    .float-anim { animation: float 3.5s ease-in-out infinite; }
-    .orb-anim   { animation: orb 8s ease-in-out infinite; }
-
-    /* ─── BUTTON PRESS EFFECT ─── */
+    /* ── BUTTONS ── */
     .btn-gold {
-      background: linear-gradient(135deg, #D4AF37 0%, #c49b28 100%);
-      color: #050505;
+      background: linear-gradient(135deg, #D4AF37 0%, #b8941f 100%);
+      color: #000;
       font-family: 'Cinzel', serif;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      border-radius: 9999px;
-      transition: transform 0.12s cubic-bezier(.22,1,.36,1), box-shadow 0.12s;
+      transition: transform 0.12s cubic-bezier(.22,1,.36,1), box-shadow 0.15s;
       -webkit-tap-highlight-color: transparent;
     }
-    .btn-gold:active {
-      transform: scale(0.95);
-      box-shadow: 0 0 22px rgba(212,175,55,0.45);
-      animation: pressGold 0.3s ease;
-    }
-    .btn-outline-gold {
+    .btn-gold:active { transform: scale(0.94); box-shadow: 0 0 28px rgba(212,175,55,0.5); }
+
+    .btn-outline {
       background: transparent;
       color: #D4AF37;
       font-family: 'Cinzel', serif;
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      border-radius: 9999px;
-      border: 1px solid rgba(212,175,55,0.35);
-      transition: transform 0.12s cubic-bezier(.22,1,.36,1), background 0.2s, border-color 0.2s;
+      border: 1px solid rgba(212,175,55,0.3);
+      transition: transform 0.12s cubic-bezier(.22,1,.36,1), background 0.18s, border-color 0.18s;
     }
-    .btn-outline-gold:active {
-      transform: scale(0.95);
-      background: rgba(212,175,55,0.08);
-      border-color: rgba(212,175,55,0.6);
-    }
+    .btn-outline:active { transform: scale(0.94); background: rgba(212,175,55,0.08); border-color: rgba(212,175,55,0.55); }
 
-    /* ─── BADGE ─── */
-    .badge-founder {
-      background: linear-gradient(135deg, #D4AF37, #a88a1e);
+    .btn-tg {
+      background: linear-gradient(135deg, #26A5E4, #1a85b8);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border-radius: 12px;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .btn-tg:active { transform: scale(0.94); box-shadow: 0 0 20px rgba(38,165,228,0.4); }
+
+    .btn-wa {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border-radius: 12px;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .btn-wa:active { transform: scale(0.94); box-shadow: 0 0 20px rgba(37,211,102,0.4); }
+
+    /* ── BADGE ── */
+    .badge {
+      background: linear-gradient(135deg, #D4AF37, #9a7e1e);
       color: #000;
-      font-size: 0.52rem;
+      font-size: 0.5rem;
       font-weight: 700;
       letter-spacing: 0.13em;
       text-transform: uppercase;
-      padding: 3px 8px;
+      padding: 3px 7px;
       border-radius: 99px;
       font-family: 'Montserrat', sans-serif;
+      white-space: nowrap;
+    }
+    .badge-dark {
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 99px;
+      font-family: 'Montserrat', sans-serif;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* ─── FORM INPUTS ─── */
+    /* ── INPUTS ── */
     .ozh-input {
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(212,175,55,0.14);
-      color: #F5F0E8;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
@@ -211,56 +183,84 @@
       transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
     }
     .ozh-input:focus {
-      border-color: rgba(212,175,55,0.5);
-      background: rgba(255,255,255,0.055);
+      border-color: rgba(212,175,55,0.45);
+      background: rgba(255,255,255,0.06);
       box-shadow: 0 0 0 3px rgba(212,175,55,0.07);
     }
-    .ozh-input::placeholder { color: rgba(245,240,232,0.2); }
-    .ozh-input option { background: #111; color: #F5F0E8; }
+    .ozh-input::placeholder { color: rgba(255,255,255,0.2); }
+    .ozh-input option { background: #111; color: #fff; }
 
-    /* ─── BOTTOM NAV ─── */
-    .bottom-nav { padding-bottom: env(safe-area-inset-bottom, 8px); }
-
-    /* ─── NAV ACTIVE DOT ─── */
-    .nav-active-dot {
-      width: 4px; height: 4px; border-radius: 50%;
-      background: #D4AF37;
-      box-shadow: 0 0 6px rgba(212,175,55,0.7);
-      margin: 0 auto;
-    }
-
-    /* ─── GATED OVERLAY ─── */
-    .gated-overlay {
-      background: rgba(5,5,5,0.8);
-      backdrop-filter: blur(8px);
-    }
-
-    /* ─── FILTER TABS ─── */
-    .filter-tab {
+    /* ── FILTER TABS ── */
+    .cat-tab {
       font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 99px;
-      border: 1px solid rgba(212,175,55,0.18);
-      color: rgba(245,240,232,0.45);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.4);
       background: transparent;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(.22,1,.36,1);
       white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
     }
-    .filter-tab.active {
-      background: linear-gradient(135deg, #D4AF37 0%, #a88a1e 100%);
-      color: #050505;
+    .cat-tab.active {
+      background: linear-gradient(135deg, #D4AF37 0%, #9a7e1e 100%);
+      color: #000;
       border-color: transparent;
-      box-shadow: 0 0 14px rgba(212,175,55,0.25);
+      box-shadow: 0 0 18px rgba(212,175,55,0.28);
+    }
+    .cat-tab:active { transform: scale(0.93); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes goldPulse {
+      0%, 100% { opacity: 0.5; box-shadow: 0 0 4px rgba(212,175,55,0.4); }
+      50%       { opacity: 1;   box-shadow: 0 0 10px rgba(212,175,55,1); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+    @keyframes orbDrift {
+      0%   { transform: translate(0,0) scale(1); opacity: 0.5; }
+      33%  { transform: translate(10px,-15px) scale(1.1); opacity: 0.8; }
+      66%  { transform: translate(-8px,10px) scale(0.95); opacity: 0.6; }
+      100% { transform: translate(0,0) scale(1); opacity: 0.5; }
+    }
+    @keyframes copyCheck {
+      0%   { transform: scale(0.5); opacity: 0; }
+      60%  { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    /* ─── INVITE KEY ─── */
+    .fade-up-1 { animation: fadeUp 0.6s cubic-bezier(.22,1,.36,1) both; }
+    .fade-up-2 { animation: fadeUp 0.6s 0.1s cubic-bezier(.22,1,.36,1) both; }
+    .fade-up-3 { animation: fadeUp 0.6s 0.2s cubic-bezier(.22,1,.36,1) both; }
+    .fade-up-4 { animation: fadeUp 0.6s 0.3s cubic-bezier(.22,1,.36,1) both; }
+    .gold-dot { animation: goldPulse 2s ease-in-out infinite; }
+    .shimmer-card {
+      background: linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.06) 50%, rgba(212,175,55,0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 3s infinite;
+    }
+    .float { animation: float 3.5s ease-in-out infinite; }
+    .orb { animation: orbDrift 9s ease-in-out infinite; }
+    .copy-check { animation: copyCheck 0.3s ease forwards; }
+
+    /* ── KEY CARD ── */
     .key-card {
-      background: linear-gradient(135deg, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 100%);
-      border: 1px solid rgba(212,175,55,0.22);
+      background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, rgba(212,175,55,0.02) 100%);
+      border: 1px solid rgba(212,175,55,0.2);
       border-radius: 16px;
       padding: 16px;
       position: relative;
@@ -270,469 +270,618 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+      background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.5) 50%, transparent 100%);
     }
     .key-code {
       font-family: 'Courier New', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
       color: #D4AF37;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(212,175,55,0.2);
-      border-radius: 8px;
-      padding: 10px 14px;
-    }
-
-    /* ─── REGION SELECTOR ─── */
-    .region-btn {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      padding: 9px 16px;
-      border-radius: 10px;
+      background: rgba(0,0,0,0.5);
       border: 1px solid rgba(212,175,55,0.18);
-      background: rgba(255,255,255,0.02);
-      color: rgba(245,240,232,0.5);
-      transition: all 0.25s cubic-bezier(.22,1,.36,1);
-    }
-    .region-btn.selected {
-      background: rgba(212,175,55,0.1);
-      border-color: rgba(212,175,55,0.5);
-      color: #D4AF37;
-      box-shadow: 0 0 16px rgba(212,175,55,0.14);
-      transform: translateY(-1px);
-    }
-    .region-btn:active {
-      transform: scale(0.95);
+      border-radius: 8px;
+      padding: 9px 12px;
     }
 
-    /* ─── PRODUCT MODAL ─── */
-    .modal-cta-discord {
-      background: linear-gradient(135deg, #5865F2, #3b44c4);
-      color: #fff;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      border-radius: 12px;
-      transition: transform 0.12s, box-shadow 0.12s;
-    }
-    .modal-cta-discord:active {
-      transform: scale(0.95);
-      box-shadow: 0 0 20px rgba(88,101,242,0.4);
-    }
-    .modal-cta-wa {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: #fff;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      border-radius: 12px;
-      transition: transform 0.12s, box-shadow 0.12s;
-    }
-    .modal-cta-wa:active {
-      transform: scale(0.95);
-      box-shadow: 0 0 20px rgba(37,211,102,0.35);
-    }
-
-    /* ─── AMBIENT ─── */
-    .ambient-orb {
+    /* ── REGION MENU ── */
+    .region-menu {
       position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(60px);
+      top: calc(100% + 10px);
+      right: 0;
+      width: 160px;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      overflow: hidden;
+      z-index: 200;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
     }
+    .region-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .region-item:last-child { border-bottom: none; }
+    .region-item:active, .region-item.active { background: rgba(212,175,55,0.1); color: #D4AF37; }
+
+    /* ── STORE EMBED ── */
+    .store-frame {
+      width: 100%;
+      border: none;
+      background: #000;
+      display: block;
+    }
+
+    /* ── NAV ── */
+    .nav-dot {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: #D4AF37;
+      box-shadow: 0 0 6px rgba(212,175,55,0.8);
+      margin: 0 auto;
+    }
+
+    /* ── DIVIDER ── */
+    .gold-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+    }
+
+    /* ── AMBIENT ── */
+    .ambient { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); }
   </style>
 </head>
-<body class="bg-obsidian" x-data="app()" x-init="init()">
+<body x-data="app()" x-init="init()" class="bg-black">
 
-  <!-- ─── AMBIENT BACKGROUND ─── -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="ambient-orb w-80 h-80 orb-anim" style="top:10%;left:50%;transform:translateX(-50%);background:radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);"></div>
-    <div class="ambient-orb w-56 h-56" style="bottom:20%;right:-5%;background:radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%); animation: orb 12s ease-in-out infinite reverse;"></div>
-    <div class="ambient-orb w-40 h-40" style="top:40%;left:-5%;background:radial-gradient(circle, rgba(212,175,55,0.03) 0%, transparent 70%); animation: orb 10s 3s ease-in-out infinite;"></div>
+  <!-- ── AMBIENT LIGHT ── -->
+  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="ambient w-96 h-96 orb"
+         style="top:0;left:50%;transform:translateX(-50%);background:radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);"></div>
+    <div class="ambient w-64 h-64"
+         style="bottom:15%;right:-8%;background:radial-gradient(circle, rgba(212,175,55,0.03) 0%, transparent 70%);animation:orbDrift 13s 2s ease-in-out infinite reverse;"></div>
   </div>
 
-  <!-- ─── REGION ONBOARDING OVERLAY ─── -->
+  <!-- ══════════════════════════════════════
+       REGION ONBOARDING
+  ══════════════════════════════════════ -->
   <div x-show="!regionSelected"
-       x-transition:leave="transition ease-in duration-400"
-       x-transition:leave-start="opacity-100 scale-100"
-       x-transition:leave-end="opacity-0 scale-105"
-       class="fixed inset-0 z-[100] flex flex-col items-center justify-center px-6"
-       style="background: rgba(5,5,5,0.97); backdrop-filter: blur(20px);">
+       x-transition:leave="transition ease-in duration-350"
+       x-transition:leave-start="opacity-100"
+       x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-[200] flex flex-col items-center justify-center px-6"
+       style="background:#000;">
 
     <div class="text-center max-w-xs w-full">
-      <!-- Logo -->
-      <div class="float-anim mb-8">
+      <div class="float mb-8">
         <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
-             alt="OZH" class="h-14 w-auto mx-auto" style="mix-blend-mode:screen;"/>
+             alt="OZH" class="h-12 w-auto mx-auto" style="mix-blend-mode:screen;"/>
       </div>
 
-      <div class="cinzel text-gold text-xs tracking-[0.4em] uppercase mb-3 opacity-70">Global Society</div>
-      <h1 class="cinzel font-black text-3xl text-bone leading-tight mb-2">Localize Your<br/><span class="text-gold-grad">Node</span></h1>
-      <p class="text-bone-dim text-xs mont leading-relaxed mb-8">Select your region to personalize the experience and connect with local Society members.</p>
+      <div class="gold-line mb-6"></div>
+
+      <div class="cinzel text-xs tracking-[0.4em] text-gold-dim uppercase mb-2 fade-up-1">Global Society</div>
+      <h1 class="cinzel font-black text-3xl text-white leading-tight mb-2 fade-up-2">
+        Select Your<br/><span class="text-gold-grad">Node</span>
+      </h1>
+      <p class="text-white/40 text-xs mont leading-relaxed mb-8 fade-up-3">
+        The world's most innovative cannabis community.<br/>Where are you?
+      </p>
 
       <!-- Region grid -->
-      <div class="grid grid-cols-3 gap-2 mb-4">
+      <div class="grid grid-cols-3 gap-2 mb-4 fade-up-3">
         <template x-for="r in regions" :key="r.code">
           <button @click="selectedRegion = r.code"
-            :class="selectedRegion === r.code ? 'region-btn selected' : 'region-btn'">
-            <div x-text="r.flag" class="text-lg mb-1"></div>
-            <div x-text="r.code" class="text-xs"></div>
+            class="flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-200"
+            :style="selectedRegion === r.code
+              ? 'background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.45);box-shadow:0 0 18px rgba(212,175,55,0.15);'
+              : 'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);'">
+            <span class="text-2xl" x-text="r.flag"></span>
+            <span class="cinzel text-xs tracking-widest font-bold"
+                  :class="selectedRegion === r.code ? 'text-gold' : 'text-white/40'"
+                  x-text="r.code"></span>
           </button>
         </template>
       </div>
 
-      <!-- Welcome msg -->
-      <div x-show="selectedRegion" class="glass rounded-xl px-4 py-3 mb-6 text-center">
+      <!-- Dynamic welcome -->
+      <div x-show="selectedRegion" x-transition class="glass-gold rounded-xl px-4 py-3 mb-6 text-center fade-up-4">
         <div class="cinzel text-gold text-xs tracking-widest" x-text="'Welcome to the Society.'"></div>
-        <div class="text-bone-dim text-xs mont mt-1" x-text="'Localizing nodes for ' + selectedRegion + '...'"></div>
+        <div class="text-white/50 text-xs mont mt-0.5" x-text="'Localizing nodes for ' + chapterName() + '...'"></div>
       </div>
 
       <button @click="selectedRegion && (regionSelected = true)"
-        :class="selectedRegion ? 'btn-gold opacity-100' : 'btn-gold opacity-40 cursor-not-allowed'"
-        class="w-full py-4 text-xs tracking-widest">
+        class="btn-gold w-full py-4 text-xs tracking-widest rounded-xl fade-up-4"
+        :class="selectedRegion ? 'opacity-100' : 'opacity-30 pointer-events-none'">
         Enter Society
       </button>
+
+      <div class="gold-line mt-6"></div>
     </div>
   </div>
 
-  <!-- ─── APP SHELL ─── -->
+  <!-- ══════════════════════════════════════
+       APP SHELL
+  ══════════════════════════════════════ -->
   <div class="fixed inset-0 flex flex-col z-10">
 
-    <!-- TOP BAR -->
-    <div class="glass-dark flex items-center justify-between px-5 pt-4 pb-3 shrink-0" style="padding-top: max(16px, env(safe-area-inset-top, 16px));">
-      <div class="flex items-center gap-2.5">
-        <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
-             alt="OZH" class="h-8 w-auto" style="mix-blend-mode:screen;"/>
-      </div>
+    <!-- ── TOP BAR ── -->
+    <div class="glass-top flex items-center justify-between px-5 pt-3 pb-3 shrink-0"
+         style="padding-top: max(14px, env(safe-area-inset-top, 14px));">
+
+      <!-- Logo -->
+      <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
+           alt="OZH" class="h-7 w-auto" style="mix-blend-mode:screen;"/>
+
       <div class="flex items-center gap-2">
-        <!-- Region pill -->
-        <button @click="regionSelected = false" class="glass px-2.5 py-1 rounded-full flex items-center gap-1.5">
-          <span class="text-xs" x-text="regionFlag()"></span>
-          <span class="cinzel text-bone-dim text-xs font-semibold tracking-wider" x-text="selectedRegion || 'CO'"></span>
-        </button>
-        <div class="glass px-3 py-1 rounded-full flex items-center gap-1.5">
-          <div class="w-1.5 h-1.5 rounded-full glow-pulse" style="background:#D4AF37;"></div>
-          <span class="cinzel text-gold text-xs font-semibold tracking-wider">V2</span>
+        <!-- Live dot -->
+        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);">
+          <div class="w-1.5 h-1.5 rounded-full gold-dot" style="background:#D4AF37;"></div>
+          <span class="cinzel text-white/50 text-xs font-semibold tracking-wider">V3</span>
+        </div>
+
+        <!-- Region flag button -->
+        <div class="relative" x-data="{ open: false }">
+          <button @click="open = !open; $nextTick(() => { if(typeof lucide!=='undefined') lucide.createIcons(); })"
+            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl transition-all"
+            style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
+            <span class="text-base leading-none" x-text="regionFlag()"></span>
+            <i data-lucide="chevron-down" class="w-3 h-3 text-white/40" :style="open ? 'transform:rotate(180deg);transition:transform 0.2s' : 'transition:transform 0.2s'"></i>
+          </button>
+
+          <!-- Dropdown -->
+          <div x-show="open"
+               x-transition:enter="transition ease-out duration-150"
+               x-transition:enter-start="opacity-0 scale-95 translate-y-1"
+               x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+               @click.away="open = false"
+               class="region-menu">
+            <template x-for="r in regions" :key="r.code">
+              <div @click="selectedRegion = r.code; open = false;"
+                class="region-item"
+                :class="selectedRegion === r.code ? 'active' : ''">
+                <span class="text-lg" x-text="r.flag"></span>
+                <div>
+                  <div class="font-bold" x-text="r.code"></div>
+                  <div class="text-white/30 normal-case" style="font-size:0.55rem;letter-spacing:0.05em;font-family:'Montserrat',sans-serif;" x-text="r.chapter"></div>
+                </div>
+              </div>
+            </template>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- CONTENT AREA -->
+    <!-- ── CONTENT ── -->
     <div class="flex-1 scroll-area relative">
 
-      <!-- ══════════════════════════════════════
-           TAB: EXPLORE
-      ══════════════════════════════════════ -->
-      <div x-show="tab === 'explore'"
-           x-transition:enter="transition ease-out duration-200"
+      <!-- ════════════════════════
+           EXPLORE
+      ════════════════════════ -->
+      <div x-show="tab==='explore'"
+           x-transition:enter="transition ease-out duration-180"
            x-transition:enter-start="opacity-0 translate-y-2"
            x-transition:enter-end="opacity-100 translate-y-0">
 
         <!-- Hero -->
-        <div class="relative overflow-hidden px-5 pt-6 pb-8">
-          <div class="animate-fade-up text-center mb-6">
-            <div class="cinzel text-xs tracking-[0.3em] text-gold-dim uppercase mb-3">Colombia Chapter · Est. 2026</div>
-            <h1 class="cinzel font-black text-3xl leading-tight mb-3">
+        <div class="px-5 pt-6 pb-8">
+          <div class="fade-up-1 text-center mb-6">
+            <div class="cinzel text-xs tracking-[0.35em] text-gold/60 uppercase mb-2" x-text="chapterName() + ' · Est. 2026'"></div>
+            <h1 class="cinzel font-black text-[2rem] leading-tight mb-3">
               <span class="text-gold-grad">A Different Way</span><br/>
-              <span class="text-bone">to See the Plant.</span>
+              <span class="text-white">to See the Plant.</span>
             </h1>
-            <p class="text-bone-dim text-sm mont leading-relaxed max-w-xs mx-auto">Beta Access open. Join the most exclusive cannabis society in Latin America.</p>
+            <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">The world's most innovative cannabis community. Producers, connoisseurs, culture.</p>
           </div>
-          <div class="animate-fade-up-2 flex justify-center gap-3 mb-8">
-            <button @click="tab='register'" class="btn-gold text-xs px-6 py-3">Get Access</button>
-            <button @click="tab='society'" class="btn-outline-gold text-xs px-6 py-3">Society</button>
+
+          <div class="fade-up-2 flex justify-center gap-3 mb-8">
+            <button @click="tab='register'" class="btn-gold text-xs px-6 py-3 rounded-full">Get Access</button>
+            <button @click="tab='society'" class="btn-outline text-xs px-6 py-3 rounded-full">Society</button>
           </div>
-          <!-- Stats bar -->
-          <div class="animate-fade-up-3 glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer-bg">
+
+          <!-- Stats -->
+          <div class="fade-up-3 glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer-card">
             <div>
-              <div class="cinzel text-gold font-bold text-xl">47</div>
-              <div class="text-bone-dim text-xs mont mt-0.5">Producers</div>
+              <div class="cinzel text-gold font-bold text-2xl">47</div>
+              <div class="text-white/35 text-xs mont mt-0.5">Producers</div>
             </div>
-            <div style="border-left:1px solid rgba(212,175,55,0.1); border-right:1px solid rgba(212,175,55,0.1);">
-              <div class="cinzel text-gold font-bold text-xl">12</div>
-              <div class="text-bone-dim text-xs mont mt-0.5">Strains</div>
+            <div style="border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);">
+              <div class="cinzel text-gold font-bold text-2xl">12</div>
+              <div class="text-white/35 text-xs mont mt-0.5">Strains</div>
             </div>
             <div>
-              <div class="cinzel text-gold font-bold text-xl">COL</div>
-              <div class="text-bone-dim text-xs mont mt-0.5">Origin 🇨🇴</div>
+              <div class="cinzel text-gold font-bold text-2xl">5</div>
+              <div class="text-white/35 text-xs mont mt-0.5">Nodes</div>
             </div>
           </div>
         </div>
 
-        <!-- Section label -->
+        <div class="gold-line mx-5 mb-5"></div>
+
+        <!-- Producers section -->
         <div class="px-5 mb-4 flex items-center justify-between">
-          <div class="cinzel text-xs font-semibold tracking-[0.2em] text-gold uppercase">Verified Producers</div>
-          <div class="text-bone-dim text-xs mont">Small Batch · Certified</div>
+          <div class="cinzel text-xs font-semibold tracking-[0.2em] text-gold/80 uppercase">Verified Producers</div>
+          <div class="text-white/30 text-xs mont">Small Batch · Certified</div>
         </div>
 
-        <!-- Producer cards -->
-        <div class="px-5 space-y-4 pb-4">
+        <div class="px-5 space-y-4 pb-6">
           <template x-for="p in producers" :key="p.id">
-            <div class="glass border-gold-neon rounded-2xl overflow-hidden glass-hover" style="transition: transform 0.15s cubic-bezier(.22,1,.36,1);">
+            <div class="glass rounded-2xl overflow-hidden" style="border-color:rgba(255,255,255,0.07);">
               <div class="relative h-48 overflow-hidden">
-                <img :src="p.img" :alt="p.strain" loading="lazy" class="w-full h-full object-cover" style="filter:saturate(0.65) brightness(0.8);"/>
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(5,5,5,0.85) 0%, transparent 55%);"></div>
+                <img :src="p.img" :alt="p.strain" loading="lazy" class="w-full h-full object-cover" style="filter:saturate(0.5) brightness(0.75);"/>
+                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 55%);"></div>
                 <div class="absolute top-3 left-3 flex gap-2 flex-wrap">
-                  <span class="badge-founder">🇨🇴 Colombia Origin</span>
-                  <span x-show="p.verified" class="badge-founder" style="background:linear-gradient(135deg,#1a6b3c,#0d4525);">✓ Verified</span>
+                  <span class="badge">🇨🇴 Origin</span>
+                  <span x-show="p.verified" class="badge" style="background:linear-gradient(135deg,#1a5c35,#0d3a20);">✓ Verified</span>
                 </div>
                 <div class="absolute bottom-3 left-3">
-                  <div class="cinzel text-bone font-bold text-lg leading-tight" x-text="p.strain"></div>
-                  <div class="text-bone-dim text-xs mont" x-text="p.producer"></div>
+                  <div class="cinzel text-white font-bold text-lg leading-tight" x-text="p.strain"></div>
+                  <div class="text-white/45 text-xs mont" x-text="p.producer"></div>
                 </div>
               </div>
               <div class="p-4">
-                <div class="flex items-center justify-between mb-3">
-                  <div class="flex gap-4 text-xs text-bone-dim mont">
-                    <span>THC <span class="text-gold font-semibold" x-text="p.thc"></span></span>
-                    <span>CBD <span class="text-gold font-semibold" x-text="p.cbd"></span></span>
-                    <span>Type <span class="text-bone font-medium" x-text="p.type"></span></span>
-                  </div>
+                <div class="flex gap-4 text-xs text-white/40 mont mb-3">
+                  <span>THC <span class="text-gold font-semibold" x-text="p.thc"></span></span>
+                  <span>CBD <span class="text-gold font-semibold" x-text="p.cbd"></span></span>
+                  <span>Type <span class="text-white/70 font-medium" x-text="p.type"></span></span>
                 </div>
-                <button @click="openInsight(p)"
-                  class="btn-outline-gold w-full rounded-xl py-2.5 text-xs">
+                <button @click="openInsight(p)" class="btn-outline w-full rounded-xl py-2.5 text-xs">
                   View Insights →
                 </button>
               </div>
             </div>
           </template>
         </div>
-
-        <div class="px-5 pt-2 pb-6">
-          <div class="glass rounded-2xl p-4 text-center shimmer-bg">
-            <div class="cinzel text-gold text-xs tracking-widest uppercase mb-1">More Producers</div>
-            <p class="text-bone-dim text-xs mont">Join the Society to access the full verified producer network.</p>
-          </div>
-        </div>
       </div>
 
-      <!-- ══════════════════════════════════════
-           TAB: MARKET
-      ══════════════════════════════════════ -->
-      <div x-show="tab === 'market'"
-           x-transition:enter="transition ease-out duration-200"
+      <!-- ════════════════════════
+           MARKET (VAULT)
+      ════════════════════════ -->
+      <div x-show="tab==='market'"
+           x-transition:enter="transition ease-out duration-180"
            x-transition:enter-start="opacity-0 translate-y-2"
            x-transition:enter-end="opacity-100 translate-y-0">
 
         <div class="px-5 pt-6 pb-4">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold-dim uppercase mb-2">Premium Market</div>
-          <h2 class="cinzel font-bold text-2xl text-bone mb-1">The Vault</h2>
-          <p class="text-bone-dim text-xs mont">Logistics by <span class="text-gold font-semibold">HIGENCY</span> · EU & LATAM Distribution</p>
+          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-1">Premium Market</div>
+          <h2 class="cinzel font-bold text-2xl text-white mb-1">The Vault</h2>
+          <p class="text-white/35 text-xs mont">OZH Verified · Global Distribution Network</p>
         </div>
 
-        <!-- Category filter tabs -->
+        <!-- Category filter -->
         <div class="px-5 mb-4">
-          <div class="flex gap-2 overflow-x-auto pb-1" style="scrollbar-width:none;">
+          <div class="flex gap-2 overflow-x-auto pb-1">
             <template x-for="cat in categories" :key="cat">
               <button @click="activeCategory = cat"
-                :class="activeCategory === cat ? 'filter-tab active' : 'filter-tab'">
-                <span x-text="cat"></span>
+                :class="activeCategory === cat ? 'cat-tab active' : 'cat-tab'"
+                x-text="cat">
               </button>
             </template>
           </div>
         </div>
 
-        <!-- Gated notice -->
-        <div class="mx-5 mb-5 glass border-gold-neon rounded-2xl p-4 flex items-start gap-3">
-          <div class="w-8 h-8 rounded-full bg-gold bg-opacity-10 flex items-center justify-center shrink-0 mt-0.5">
-            <i data-lucide="lock" class="w-4 h-4 text-gold"></i>
+        <!-- Gate notice -->
+        <div class="mx-5 mb-5 glass-gold rounded-2xl p-4 flex items-start gap-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+               style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+            <i data-lucide="shield" class="w-4 h-4 text-gold" style="stroke-width:1.5;"></i>
           </div>
           <div>
-            <div class="cinzel text-gold text-xs font-semibold tracking-wider mb-1">Membership Required for Trading</div>
-            <p class="text-bone-dim text-xs mont leading-relaxed">Prices visible. Verify Society membership to unlock purchasing and full product details.</p>
-            <button @click="tab='register'" class="btn-gold mt-3 text-xs px-4 py-2">Get Membership</button>
+            <div class="cinzel text-gold text-xs font-semibold tracking-wider mb-1">Level 2 Verification Required</div>
+            <p class="text-white/40 text-xs mont leading-relaxed">Prices are visible. Unlock purchases by verifying via Discord + WhatsApp.</p>
+            <button @click="tab='register'" class="btn-gold mt-3 text-xs px-4 py-2 rounded-full">Get Access</button>
           </div>
         </div>
 
-        <!-- Product grid -->
+        <!-- Products grid -->
         <div class="px-5 grid grid-cols-2 gap-3 pb-6">
           <template x-for="product in filteredProducts()" :key="product.id">
-            <div @click="openProductModal(product)" class="glass border-gold-neon rounded-2xl overflow-hidden glass-hover cursor-pointer">
+            <div @click="openProductModal(product)"
+                 class="glass rounded-2xl overflow-hidden cursor-pointer"
+                 style="border-color:rgba(255,255,255,0.07);">
               <div class="relative h-36 overflow-hidden">
-                <img :src="product.img" :alt="product.name" loading="lazy" class="w-full h-full object-cover" style="filter:saturate(0.55) brightness(0.7);"/>
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(5,5,5,0.88) 0%, transparent 50%);"></div>
+                <img :src="product.img" :alt="product.name" loading="lazy" class="w-full h-full object-cover"
+                     style="filter:saturate(0.4) brightness(0.65);"/>
+                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 50%);"></div>
                 <div class="absolute top-2 right-2">
-                  <span class="badge-founder" x-text="product.badge"></span>
+                  <span class="badge" x-text="product.cat"></span>
                 </div>
                 <div class="absolute bottom-2 left-2 right-2">
-                  <div class="cinzel text-bone text-xs font-bold leading-tight" x-text="product.name"></div>
+                  <div class="cinzel text-white text-xs font-bold leading-tight" x-text="product.name"></div>
                 </div>
               </div>
               <div class="p-3">
                 <div class="cinzel text-gold font-bold text-base mb-2" x-text="product.price"></div>
                 <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-1">
-                    <i data-lucide="truck" class="w-3 h-3 text-gold-dim"></i>
-                    <span class="text-bone-dim mont" style="font-size:0.58rem; letter-spacing:0.07em;">HIGENCY</span>
-                  </div>
-                  <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.25);">
-                    <i data-lucide="lock" class="w-3 h-3 text-gold"></i>
+                  <span class="text-white/30 mont" style="font-size:0.58rem;letter-spacing:0.06em;">OZH Verified</span>
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center"
+                       style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+                    <i data-lucide="lock" class="w-3 h-3 text-gold" style="stroke-width:1.5;"></i>
                   </div>
                 </div>
               </div>
             </div>
           </template>
         </div>
+      </div>
 
-        <!-- HIGENCY promo -->
-        <div class="mx-5 mb-6 glass border-gold-neon rounded-2xl p-4">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.2);">
-              <i data-lucide="package" class="w-5 h-5 text-gold"></i>
-            </div>
-            <div>
-              <div class="cinzel text-bone text-sm font-semibold">HIGENCY Logistics</div>
-              <div class="text-bone-dim text-xs mont">The trust engine behind the Society</div>
+      <!-- ════════════════════════
+           INSIGHTS (OZH Times Mirror)
+      ════════════════════════ -->
+      <div x-show="tab==='insights'"
+           x-transition:enter="transition ease-out duration-180"
+           x-transition:enter-start="opacity-0 translate-y-2"
+           x-transition:enter-end="opacity-100 translate-y-0">
+
+        <div class="px-5 pt-6 pb-4">
+          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-1">Knowledge Hub</div>
+          <h2 class="cinzel font-bold text-2xl text-white mb-1">OZH Insights</h2>
+          <p class="text-white/35 text-xs mont">By <span class="text-gold">OZH Times</span> · The Voice of the Culture</p>
+        </div>
+
+        <!-- OZH Times link card -->
+        <div class="mx-5 mb-4 glass-gold rounded-2xl p-4 flex items-center gap-3">
+          <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
+               class="h-9 w-auto" style="mix-blend-mode:screen;" alt="OZH"/>
+          <div class="flex-1">
+            <div class="cinzel text-white text-sm font-semibold">ozhtimes.co</div>
+            <div class="text-white/40 text-xs mont">A Different Way to See the Plant</div>
+          </div>
+          <a href="https://ozhtimes.co" target="_blank" class="btn-gold text-xs px-3 py-2 rounded-full" style="font-size:0.6rem;">Open ↗</a>
+        </div>
+
+        <!-- Featured articles (static mirror, styled OZH) -->
+        <div class="px-5 mb-4">
+          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Latest from the Magazine</div>
+          <div class="space-y-3">
+            <template x-for="art in articles" :key="art.id">
+              <a :href="art.url" target="_blank"
+                 class="glass rounded-2xl overflow-hidden flex items-center gap-3 p-3 no-underline active:scale-98 transition-transform"
+                 style="border-color:rgba(255,255,255,0.06);">
+                <img :src="art.img" :alt="art.title" loading="lazy"
+                     class="w-20 h-16 rounded-xl object-cover shrink-0"
+                     style="filter:saturate(0.4) brightness(0.75);"/>
+                <div class="flex-1 min-w-0">
+                  <span class="badge mb-1.5 inline-block" x-text="art.tag"></span>
+                  <div class="cinzel text-white text-xs font-semibold leading-tight line-clamp-2" x-text="art.title"></div>
+                  <div class="text-white/30 text-xs mont mt-1" x-text="art.date"></div>
+                </div>
+              </a>
+            </template>
+          </div>
+        </div>
+
+        <!-- Embed container -->
+        <div class="mx-5 mb-4">
+          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Live Feed</div>
+          <div class="glass rounded-2xl overflow-hidden" style="border-color:rgba(255,255,255,0.06); height:400px;">
+            <div class="flex flex-col items-center justify-center h-full gap-4 px-6 text-center">
+              <div class="w-12 h-12 rounded-full float flex items-center justify-center"
+                   style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+                <i data-lucide="rss" class="w-6 h-6 text-gold" style="stroke-width:1.5;"></i>
+              </div>
+              <div>
+                <div class="cinzel text-white text-sm font-semibold mb-1">Full Magazine</div>
+                <p class="text-white/35 text-xs mont leading-relaxed mb-4">Tap below to open OZH Times inside the Society browser for the full editorial experience.</p>
+                <a href="https://ozhtimes.co" target="_blank"
+                   class="btn-gold text-xs px-5 py-2.5 rounded-full inline-block">
+                  Open ozhtimes.co →
+                </a>
+              </div>
             </div>
           </div>
-          <p class="text-bone-dim text-xs mont leading-relaxed mb-3">EU-certified distribution network operating across LATAM, Europe & Southeast Asia. Zero-tolerance quality protocols.</p>
-          <a href="https://highency.com/partners" target="_blank"
-             class="flex items-center gap-2 text-gold cinzel text-xs tracking-wider">
-            highency.com <i data-lucide="external-link" class="w-3 h-3"></i>
+        </div>
+
+        <div class="px-5 pb-6">
+          <div class="gold-line mb-4"></div>
+          <p class="text-white/25 text-center text-xs mont">OZH Times is the media arm of OZH Society.<br/>Content is independently curated.</p>
+        </div>
+      </div>
+
+      <!-- ════════════════════════
+           STORE (OZH Times Mirror)
+      ════════════════════════ -->
+      <div x-show="tab==='store'"
+           x-transition:enter="transition ease-out duration-180"
+           x-transition:enter-start="opacity-0 translate-y-2"
+           x-transition:enter-end="opacity-100 translate-y-0">
+
+        <div class="px-5 pt-6 pb-4">
+          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-1">Society Store</div>
+          <h2 class="cinzel font-bold text-2xl text-white mb-1">OZH Official</h2>
+          <p class="text-white/35 text-xs mont">Merch · Accessories · Culture Objects</p>
+        </div>
+
+        <!-- App-exclusive perk banner -->
+        <div class="mx-5 mb-4 shimmer-card rounded-2xl p-4 flex items-center gap-3"
+             style="background:linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0.03) 100%);border:1px solid rgba(212,175,55,0.25);">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+               style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);">
+            <i data-lucide="star" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
+          </div>
+          <div>
+            <div class="cinzel text-gold text-xs font-bold tracking-wider">App-Only Perk Active</div>
+            <p class="text-white/50 text-xs mont mt-0.5">Members see exclusive drops + 10% Society discount on all items.</p>
+          </div>
+        </div>
+
+        <!-- Store items -->
+        <div class="px-5 grid grid-cols-2 gap-3 mb-4">
+          <template x-for="item in storeItems" :key="item.id">
+            <a :href="'https://ozhtimes.co/store'" target="_blank"
+               class="glass rounded-2xl overflow-hidden no-underline active:scale-95 transition-transform"
+               style="border-color:rgba(255,255,255,0.07);">
+              <div class="relative h-36 overflow-hidden">
+                <img :src="item.img" :alt="item.name" loading="lazy" class="w-full h-full object-cover"
+                     style="filter:saturate(0.3) brightness(0.7);"/>
+                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 50%);"></div>
+                <div x-show="item.exclusive" class="absolute top-2 left-2">
+                  <span class="badge">⭐ Exclusive</span>
+                </div>
+                <div class="absolute bottom-2 left-2 right-2">
+                  <div class="cinzel text-white text-xs font-bold leading-tight" x-text="item.name"></div>
+                </div>
+              </div>
+              <div class="p-3">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="cinzel text-gold font-bold text-sm" x-text="item.price"></div>
+                    <div x-show="item.exclusive" class="text-green-400 text-xs mont" style="font-size:0.58rem;">Members: <span x-text="item.memberPrice"></span></div>
+                  </div>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-white/25" style="stroke-width:1.5;"></i>
+                </div>
+              </div>
+            </a>
+          </template>
+        </div>
+
+        <div class="mx-5 mb-6">
+          <a href="https://ozhtimes.co/store" target="_blank"
+             class="btn-outline w-full block text-center text-xs py-3 rounded-xl">
+            Browse Full Store ↗
           </a>
         </div>
       </div>
 
-      <!-- ══════════════════════════════════════
-           TAB: SOCIETY
-      ══════════════════════════════════════ -->
-      <div x-show="tab === 'society'"
-           x-transition:enter="transition ease-out duration-200"
+      <!-- ════════════════════════
+           SOCIETY
+      ════════════════════════ -->
+      <div x-show="tab==='society'"
+           x-transition:enter="transition ease-out duration-180"
            x-transition:enter-start="opacity-0 translate-y-2"
            x-transition:enter-end="opacity-100 translate-y-0">
 
         <div class="px-5 pt-6 pb-4 text-center">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold-dim uppercase mb-3">Exclusive Access</div>
+          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-3">Inner Circle</div>
           <h2 class="cinzel font-black text-2xl text-gold-grad mb-2">OZH Society</h2>
-          <p class="text-bone-dim text-sm mont leading-relaxed max-w-xs mx-auto">An underground network of verified producers, curators, and partners. By invitation only — or beta access.</p>
+          <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">The world's most innovative cannabis community. By invitation — or beta access.</p>
         </div>
 
-        <!-- Founder badge -->
-        <div class="mx-5 mb-4 glass border-gold-neon rounded-2xl p-5 text-center shimmer-bg">
-          <div class="w-16 h-16 rounded-full bg-gold bg-opacity-10 border border-gold border-opacity-30 flex items-center justify-center mx-auto mb-3 float-anim">
-            <i data-lucide="shield-check" class="w-8 h-8 text-gold"></i>
+        <!-- Founder card -->
+        <div class="mx-5 mb-4 glass-gold rounded-2xl p-5 text-center shimmer-card">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 float"
+               style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.25);">
+            <i data-lucide="shield-check" class="w-8 h-8 text-gold" style="stroke-width:1.5;"></i>
           </div>
           <div class="cinzel text-gold font-bold text-sm tracking-widest uppercase mb-1">Founder Verified</div>
-          <div class="text-bone text-sm font-medium mont mb-1">Hosber Valbuena</div>
-          <div class="text-bone-dim text-xs mont">OZH Society · Founding Member · Colombia Chapter</div>
+          <div class="text-white text-sm font-medium mont mb-1">Hosber Valbuena</div>
+          <div class="text-white/40 text-xs mont">OZH Society · Founding Member</div>
           <div class="mt-3 flex justify-center gap-2 flex-wrap">
-            <span class="badge-founder">🇨🇴 Colombia</span>
-            <span class="badge-founder" style="background:linear-gradient(135deg,#1a3a6b,#0d2045);">✓ Trust Score 100</span>
+            <span class="badge">🇨🇴 Colombia</span>
+            <span class="badge" style="background:linear-gradient(135deg,#1a3a6b,#0d2045);">✓ Trust 100</span>
           </div>
         </div>
 
-        <!-- Trust / verify -->
+        <!-- Verification paths -->
         <div class="px-5 mb-4">
-          <div class="cinzel text-xs font-semibold tracking-[0.2em] text-gold uppercase mb-3">Trust System</div>
+          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Verification Paths</div>
           <div class="space-y-3">
 
-            <div class="glass border-gold-neon rounded-xl p-4 flex items-center gap-3 glass-hover">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(88,101,242,0.15); border:1px solid rgba(88,101,242,0.3);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#5865F2"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.031.054a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            <!-- Telegram -->
+            <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                   style="background:rgba(38,165,228,0.1);border:1px solid rgba(38,165,228,0.25);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#26A5E4"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               </div>
               <div class="flex-1">
-                <div class="cinzel text-bone text-sm font-semibold">Verify via Discord</div>
-                <div class="text-bone-dim text-xs mont mt-0.5">Join OZH Society server → #verify channel</div>
+                <div class="cinzel text-white text-sm font-semibold">Join Telegram</div>
+                <div class="text-white/35 text-xs mont mt-0.5">@ozhtimes · Community channel</div>
               </div>
-              <a href="https://t.me/ozhtimes" target="_blank" class="active:scale-95 transition-transform modal-cta-discord text-xs px-3 py-2 font-bold cinzel tracking-wider">Join</a>
+              <a href="https://t.me/ozhtimes" target="_blank" class="btn-tg text-xs px-3 py-2 cinzel font-bold tracking-wider">Join</a>
             </div>
 
-            <div class="glass border-gold-neon rounded-xl p-4 flex items-center gap-3 glass-hover">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.25);">
-                <i data-lucide="badge-check" class="w-5 h-5 text-gold"></i>
+            <!-- WhatsApp Concierge -->
+            <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                   style="background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
               </div>
               <div class="flex-1">
-                <div class="cinzel text-bone text-sm font-semibold">Producer Verification</div>
-                <div class="text-bone-dim text-xs mont mt-0.5">Submit lab reports & origin docs</div>
+                <div class="cinzel text-white text-sm font-semibold">WhatsApp Concierge</div>
+                <div class="text-white/35 text-xs mont mt-0.5">+57 301 693 4949 · Direct access</div>
               </div>
-              <button @click="tab='register'" class="btn-outline-gold text-xs px-3 py-2 rounded-lg">Apply</button>
+              <a href="https://wa.me/573016934949" target="_blank" class="btn-wa text-xs px-3 py-2 cinzel font-bold tracking-wider">Chat</a>
             </div>
 
-            <div class="glass border-gold-neon rounded-xl p-4 flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.25);">
-                <i data-lucide="users" class="w-5 h-5 text-gold"></i>
+            <!-- Producer verify -->
+            <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                   style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+                <i data-lucide="badge-check" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
               </div>
               <div class="flex-1">
-                <div class="cinzel text-bone text-sm font-semibold">Founder Member Status</div>
-                <div class="text-bone-dim text-xs mont mt-0.5">First 100 beta users get Founder badge</div>
+                <div class="cinzel text-white text-sm font-semibold">Producer Verification</div>
+                <div class="text-white/35 text-xs mont mt-0.5">Submit lab reports & origin docs</div>
               </div>
-              <span class="badge-founder">47 / 100</span>
+              <button @click="tab='register'" class="btn-outline text-xs px-3 py-2 rounded-lg">Apply</button>
             </div>
 
+            <!-- Founder count -->
+            <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                   style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+                <i data-lucide="users" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
+              </div>
+              <div class="flex-1">
+                <div class="cinzel text-white text-sm font-semibold">Founder Status</div>
+                <div class="text-white/35 text-xs mont mt-0.5">First 100 beta members</div>
+              </div>
+              <span class="badge">47 / 100</span>
+            </div>
           </div>
         </div>
 
-        <!-- ─── INVITES VAULT ─── -->
-        <div class="px-5 mb-4">
-          <div class="cinzel text-xs font-semibold tracking-[0.2em] text-gold uppercase mb-3">Invites · The Vault</div>
-          <div class="key-card mb-3">
+        <!-- Invite Vault -->
+        <div class="px-5 mb-6">
+          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Invite Vault</div>
+          <div class="key-card">
             <div class="flex items-center justify-between mb-3">
-              <div class="cinzel text-bone text-sm font-semibold">Your Invite Keys</div>
-              <span class="badge-founder">3 Available</span>
+              <div class="cinzel text-white text-sm font-semibold">Your Keys</div>
+              <span class="badge">3 Available</span>
             </div>
             <div class="space-y-2">
               <template x-for="key in inviteKeys" :key="key.code">
                 <div class="flex items-center gap-3">
                   <div class="key-code flex-1" x-text="key.code"></div>
                   <button @click="copyKey(key.code)"
-                    class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 glass-hover active:scale-90 transition-transform"
-                    style="background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.25);">
-                    <i x-show="copiedKey !== key.code" data-lucide="copy" class="w-4 h-4 text-gold"></i>
-                    <i x-show="copiedKey === key.code" data-lucide="check" class="w-4 h-4 text-green-400"></i>
+                    class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-transform active:scale-90"
+                    style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+                    <i x-show="copiedKey !== key.code" data-lucide="copy" class="w-4 h-4 text-gold" style="stroke-width:1.5;"></i>
+                    <i x-show="copiedKey === key.code" data-lucide="check" class="w-4 h-4 text-green-400 copy-check" style="stroke-width:1.5;"></i>
                   </button>
                 </div>
               </template>
             </div>
-            <p class="text-bone-dim text-xs mont mt-3">Tap the copy icon to share your key. One use per code.</p>
+            <p class="text-white/25 text-xs mont mt-3">Tap to copy. One use per code.</p>
           </div>
-        </div>
-
-        <!-- OZH Times & ozhtimes.co -->
-        <div class="mx-5 mb-4 glass border-gold-neon rounded-2xl p-4 flex items-center gap-3 glass-hover">
-          <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
-               class="h-10 w-auto" style="mix-blend-mode:screen;" alt="OZH"/>
-          <div class="flex-1">
-            <div class="cinzel text-bone text-sm font-semibold">OZH Times Media</div>
-            <div class="text-bone-dim text-xs mont mt-0.5">ozhtimes.co · The Voice of the Culture</div>
-          </div>
-          <a href="https://ozhtimes.co" target="_blank" class="active:scale-95 transition-transform text-gold">
-            <i data-lucide="external-link" class="w-4 h-4"></i>
-          </a>
-        </div>
-
-        <div class="px-5 mb-6 glass border-gold-neon rounded-2xl p-4 flex items-center gap-3 glass-hover">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.2);">
-            <i data-lucide="package" class="w-5 h-5 text-gold"></i>
-          </div>
-          <div class="flex-1">
-            <div class="cinzel text-bone text-sm font-semibold">HIGENCY Logistics</div>
-            <div class="text-bone-dim text-xs mont mt-0.5">Global Brand Distribution · EU Certified</div>
-          </div>
-          <a href="https://highency.com/partners" target="_blank" class="active:scale-95 transition-transform text-gold">
-            <i data-lucide="external-link" class="w-4 h-4"></i>
-          </a>
         </div>
       </div>
 
-      <!-- ══════════════════════════════════════
-           TAB: REGISTER
-      ══════════════════════════════════════ -->
-      <div x-show="tab === 'register'"
-           x-transition:enter="transition ease-out duration-200"
+      <!-- ════════════════════════
+           REGISTER
+      ════════════════════════ -->
+      <div x-show="tab==='register'"
+           x-transition:enter="transition ease-out duration-180"
            x-transition:enter-start="opacity-0 translate-y-2"
            x-transition:enter-end="opacity-100 translate-y-0">
 
         <div class="px-5 pt-6 pb-4 text-center">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold-dim uppercase mb-3">Beta Access · Colombia Chapter</div>
-          <h2 class="cinzel font-black text-2xl text-bone mb-2">Join the Underground.</h2>
-          <p class="text-bone-dim text-sm mont leading-relaxed max-w-xs mx-auto">No invite code needed during Beta. Founder Member status for first 100.</p>
+          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-3">Beta Access</div>
+          <h2 class="cinzel font-black text-2xl text-white mb-2">Join the Underground.</h2>
+          <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">No invite code during Beta. Founder status for first 100.</p>
         </div>
 
-        <!-- Form -->
         <div class="px-5 pb-6" x-show="!registered">
-          <div class="glass border-gold-neon rounded-2xl p-5 space-y-4">
+          <div class="glass rounded-2xl p-5 space-y-4" style="border-color:rgba(255,255,255,0.07);">
             <div>
               <label class="cinzel text-xs text-gold tracking-widest uppercase block mb-2">Full Name *</label>
               <input x-model="form.name" type="text" placeholder="Your name" class="ozh-input"/>
@@ -746,7 +895,7 @@
               <select x-model="form.role" class="ozh-input">
                 <option value="">Select your role...</option>
                 <option value="Producer">🌱 Producer</option>
-                <option value="Consumer">👤 Consumer</option>
+                <option value="Consumer">👤 Connoisseur</option>
                 <option value="Partner">🤝 Partner / Business</option>
                 <option value="Investor">💼 Investor</option>
                 <option value="Media">📸 Media / Creator</option>
@@ -756,172 +905,127 @@
               <label class="cinzel text-xs text-gold tracking-widest uppercase block mb-2">Email (optional)</label>
               <input x-model="form.email" type="email" placeholder="you@email.com" class="ozh-input"/>
             </div>
-
             <div x-show="formError" class="text-red-400 text-xs text-center mont" x-text="formError"></div>
-
             <button @click="submitForm()" class="btn-gold w-full py-4 text-xs tracking-widest rounded-xl">
               Request Beta Access
             </button>
-            <p class="text-bone-dim text-center mont" style="font-size:0.6rem; letter-spacing:0.07em;">By joining you agree to OZH Society's community guidelines.</p>
+            <p class="text-white/20 text-center mont" style="font-size:0.58rem;letter-spacing:0.07em;">By joining you agree to OZH Society's community guidelines.</p>
           </div>
         </div>
 
-        <!-- Success state -->
+        <!-- Success -->
         <div x-show="registered" class="px-5 pb-6 text-center">
-          <div class="glass border-gold-neon rounded-2xl p-8">
-            <div class="w-20 h-20 rounded-full bg-gold bg-opacity-10 border border-gold border-opacity-30 flex items-center justify-center mx-auto mb-5 float-anim">
-              <i data-lucide="shield-check" class="w-10 h-10 text-gold"></i>
+          <div class="glass-gold rounded-2xl p-8" style="">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 float"
+                 style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.25);">
+              <i data-lucide="shield-check" class="w-10 h-10 text-gold" style="stroke-width:1.5;"></i>
             </div>
             <div class="cinzel text-gold font-black text-xl tracking-wider mb-2">Welcome to the Underground.</div>
-            <div class="cinzel text-bone text-sm mb-4">Founder Member Status Pending.</div>
-            <p class="text-bone-dim text-xs mont leading-relaxed mb-6">You're in the first 100. We'll reach out via WhatsApp to complete your verification and activate your Founder badge.</p>
+            <div class="cinzel text-white text-sm mb-4">Founder Status Pending.</div>
+            <p class="text-white/40 text-xs mont leading-relaxed mb-6">You're in the first 100. We'll reach out via WhatsApp to complete verification and activate your Founder badge.</p>
             <div class="flex flex-col gap-3">
-              <button @click="tab='explore'" class="btn-gold text-xs px-6 py-3">Explore the Society</button>
-              <a href="https://t.me/ozhtimes" target="_blank"
-                class="btn-outline-gold block text-xs px-6 py-3 text-center">
-                Join Telegram Channel
+              <button @click="tab='explore'" class="btn-gold text-xs px-6 py-3 rounded-full">Explore the Society</button>
+              <a href="https://t.me/ozhtimes" target="_blank" class="btn-tg text-xs px-6 py-3 text-center cinzel font-bold tracking-wider rounded-full">
+                Join Telegram → @ozhtimes
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ══════════════════════════════════════
-           TAB: ACCOUNT
-      ══════════════════════════════════════ -->
-      <div x-show="tab === 'account'"
-           x-transition:enter="transition ease-out duration-200"
-           x-transition:enter-start="opacity-0 translate-y-2"
-           x-transition:enter-end="opacity-100 translate-y-0">
-
-        <div class="px-5 pt-6 pb-4 text-center">
-          <div class="w-20 h-20 rounded-full bg-gold bg-opacity-10 border border-gold border-opacity-20 flex items-center justify-center mx-auto mb-4 float-anim">
-            <i data-lucide="user" class="w-9 h-9 text-gold-dim"></i>
-          </div>
-          <div class="cinzel text-bone font-bold text-lg mb-1">Guest User</div>
-          <div class="text-bone-dim text-xs mont mb-4">No account yet — Beta access open</div>
-          <button @click="tab='register'" class="btn-gold text-xs px-8 py-3">Create Account</button>
-        </div>
-
-        <div class="px-5 space-y-3 pb-6 mt-4">
-          <div class="cinzel text-xs font-semibold tracking-[0.2em] text-gold uppercase mb-2">About OZH Society</div>
-
-          <div class="glass border-gold-neon rounded-xl p-4">
-            <div class="cinzel text-bone text-sm font-semibold mb-1">Version</div>
-            <div class="text-bone-dim text-xs mont">V2 Beta · Colombia Chapter · 2026</div>
-          </div>
-
-          <div class="glass border-gold-neon rounded-xl p-4">
-            <div class="cinzel text-bone text-sm font-semibold mb-1">Logistics Partner</div>
-            <div class="text-bone-dim text-xs mont">HIGENCY · Global Brand Distribution</div>
-            <a href="https://highency.com/partners" target="_blank" class="text-gold text-xs cinzel mt-1 block">highency.com →</a>
-          </div>
-
-          <div class="glass border-gold-neon rounded-xl p-4">
-            <div class="cinzel text-bone text-sm font-semibold mb-1">Media</div>
-            <div class="text-bone-dim text-xs mont">OZH Times · A Different Way to See the Plant</div>
-            <a href="https://ozhtimes.co" target="_blank" class="text-gold text-xs cinzel mt-1 block">ozhtimes.co →</a>
-          </div>
-
-          <div class="glass border-gold-neon rounded-xl p-4 flex items-center justify-between">
-            <div>
-              <div class="cinzel text-bone text-sm font-semibold">Concierge</div>
-              <div class="text-bone-dim text-xs mont mt-0.5">+57 301 693 4949</div>
-            </div>
-            <a href="https://wa.me/573016934949" target="_blank"
-               class="active:scale-95 transition-transform modal-cta-wa text-xs px-3 py-2 font-bold cinzel tracking-wider">
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-
     </div><!-- end scroll area -->
 
-    <!-- ─── BOTTOM NAV ─── -->
-    <div class="glass-dark bottom-nav shrink-0">
-      <div class="grid grid-cols-4 px-2 pt-2 pb-1">
+    <!-- ── BOTTOM NAV ── -->
+    <div class="glass-nav shrink-0" style="padding-bottom: env(safe-area-inset-bottom, 8px);">
+      <div class="grid grid-cols-5 px-1 pt-2 pb-1">
 
-        <button @click="tab='explore'" class="flex flex-col items-center gap-1 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="compass" class="w-5 h-5 transition-colors" :class="tab==='explore' ? 'text-gold' : 'text-bone-dim'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" :class="tab==='explore' ? 'text-gold' : 'text-bone-dim'">Explore</span>
-          <div class="nav-active-dot" x-show="tab==='explore'"></div>
+        <button @click="tab='explore'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
+          <i data-lucide="compass" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='explore' ? 'text-gold' : 'text-white/30'"></i>
+          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='explore' ? 'text-gold' : 'text-white/30'">Explore</span>
+          <div class="nav-dot" x-show="tab==='explore'"></div>
           <div class="w-1 h-1" x-show="tab!=='explore'"></div>
         </button>
 
-        <button @click="tab='market'" class="flex flex-col items-center gap-1 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="shopping-bag" class="w-5 h-5 transition-colors" :class="tab==='market' ? 'text-gold' : 'text-bone-dim'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" :class="tab==='market' ? 'text-gold' : 'text-bone-dim'">Market</span>
-          <div class="nav-active-dot" x-show="tab==='market'"></div>
+        <button @click="tab='market'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
+          <i data-lucide="shopping-bag" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='market' ? 'text-gold' : 'text-white/30'"></i>
+          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='market' ? 'text-gold' : 'text-white/30'">Market</span>
+          <div class="nav-dot" x-show="tab==='market'"></div>
           <div class="w-1 h-1" x-show="tab!=='market'"></div>
         </button>
 
-        <button @click="tab='society'" class="flex flex-col items-center gap-1 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="users" class="w-5 h-5 transition-colors" :class="tab==='society' ? 'text-gold' : 'text-bone-dim'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" :class="tab==='society' ? 'text-gold' : 'text-bone-dim'">Society</span>
-          <div class="nav-active-dot" x-show="tab==='society'"></div>
-          <div class="w-1 h-1" x-show="tab!=='society'"></div>
+        <button @click="tab='insights'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
+          <i data-lucide="newspaper" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='insights' ? 'text-gold' : 'text-white/30'"></i>
+          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='insights' ? 'text-gold' : 'text-white/30'">Insights</span>
+          <div class="nav-dot" x-show="tab==='insights'"></div>
+          <div class="w-1 h-1" x-show="tab!=='insights'"></div>
         </button>
 
-        <button @click="tab='account'" class="flex flex-col items-center gap-1 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="user-circle" class="w-5 h-5 transition-colors" :class="tab==='account' ? 'text-gold' : 'text-bone-dim'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" :class="tab==='account' ? 'text-gold' : 'text-bone-dim'">Account</span>
-          <div class="nav-active-dot" x-show="tab==='account'"></div>
-          <div class="w-1 h-1" x-show="tab!=='account'"></div>
+        <button @click="tab='store'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
+          <i data-lucide="tag" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='store' ? 'text-gold' : 'text-white/30'"></i>
+          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='store' ? 'text-gold' : 'text-white/30'">Store</span>
+          <div class="nav-dot" x-show="tab==='store'"></div>
+          <div class="w-1 h-1" x-show="tab!=='store'"></div>
+        </button>
+
+        <button @click="tab='society'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
+          <i data-lucide="users" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='society' ? 'text-gold' : 'text-white/30'"></i>
+          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='society' ? 'text-gold' : 'text-white/30'">Society</span>
+          <div class="nav-dot" x-show="tab==='society'"></div>
+          <div class="w-1 h-1" x-show="tab!=='society'"></div>
         </button>
 
       </div>
     </div>
 
-  </div><!-- end app shell -->
+  </div>
 
   <!-- ══════════════════════════════════════
-       PRODUCT VERIFICATION MODAL (Gated Vault)
+       PRODUCT GATE MODAL
   ══════════════════════════════════════ -->
   <div x-show="productModal"
        x-transition:enter="transition ease-out duration-200"
        x-transition:enter-start="opacity-0"
        x-transition:enter-end="opacity-100"
-       @click.self="productModal = false"
-       class="fixed inset-0 z-50 flex items-end justify-center"
-       style="background:rgba(5,5,5,0.85); backdrop-filter:blur(10px);">
+       @click.self="productModal=false"
+       class="fixed inset-0 z-[60] flex items-end justify-center"
+       style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);">
     <div x-show="productModal"
          x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="translate-y-full"
          x-transition:enter-end="translate-y-0"
-         class="glass-dark border-gold-neon rounded-t-3xl w-full max-w-lg p-6 pb-10">
-      <div class="w-10 h-1 bg-gold bg-opacity-30 rounded-full mx-auto mb-5"></div>
+         class="w-full max-w-lg rounded-t-3xl p-6 pb-10"
+         style="background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05);">
+      <div class="w-10 h-1 rounded-full mx-auto mb-5" style="background:rgba(255,255,255,0.15);"></div>
       <template x-if="selectedProduct">
         <div>
           <div class="flex items-start gap-4 mb-5">
             <img :src="selectedProduct.img" :alt="selectedProduct.name"
-                 class="w-20 h-20 rounded-2xl object-cover"
-                 style="filter:saturate(0.6) brightness(0.75);"/>
+                 class="w-20 h-20 rounded-2xl object-cover shrink-0"
+                 style="filter:saturate(0.4) brightness(0.7);"/>
             <div class="flex-1">
-              <div class="cinzel text-xs text-gold-dim tracking-widest uppercase mb-1" x-text="selectedProduct.badge"></div>
-              <div class="cinzel font-bold text-xl text-bone" x-text="selectedProduct.name"></div>
-              <div class="cinzel text-gold font-bold text-lg mt-1" x-text="selectedProduct.price"></div>
+              <span class="badge mb-1.5 inline-block" x-text="selectedProduct.cat"></span>
+              <div class="cinzel font-bold text-xl text-white" x-text="selectedProduct.name"></div>
+              <div class="cinzel text-gold font-bold text-lg mt-0.5" x-text="selectedProduct.price"></div>
             </div>
           </div>
 
-          <!-- Gated gate -->
-          <div class="glass rounded-2xl p-4 mb-5 text-center">
-            <div class="w-12 h-12 rounded-full bg-gold bg-opacity-10 border border-gold border-opacity-25 flex items-center justify-center mx-auto mb-3">
-              <i data-lucide="shield" class="w-6 h-6 text-gold"></i>
+          <div class="glass rounded-2xl p-4 mb-5 text-center" style="border-color:rgba(212,175,55,0.15);">
+            <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2"
+                 style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+              <i data-lucide="shield" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
             </div>
-            <div class="cinzel text-bone text-sm font-bold mb-1">Society Verification Required</div>
-            <p class="text-bone-dim text-xs mont leading-relaxed">This product is only available to verified Society members. Choose your verification path:</p>
+            <div class="cinzel text-white text-sm font-bold mb-1">Level 2 Verification Required</div>
+            <p class="text-white/40 text-xs mont leading-relaxed">Discord + WhatsApp verification required to access this product.</p>
           </div>
 
-          <!-- Dual CTA -->
           <div class="flex flex-col gap-3">
             <a href="https://t.me/ozhtimes" target="_blank"
-               class="modal-cta-discord w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold">
+               class="btn-tg w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-              Join Telegram — @ozhtimes
+              Verify via Telegram
             </a>
             <a href="https://wa.me/573016934949" target="_blank"
-               class="modal-cta-wa w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold">
+               class="btn-wa w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
               Verify via WhatsApp
             </a>
@@ -939,43 +1043,43 @@
        x-transition:enter-start="opacity-0"
        x-transition:enter-end="opacity-100"
        @click.self="modal=false"
-       class="fixed inset-0 z-50 flex items-end justify-center"
-       style="background:rgba(5,5,5,0.85); backdrop-filter:blur(10px);">
+       class="fixed inset-0 z-[60] flex items-end justify-center"
+       style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);">
     <div x-show="modal"
          x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="translate-y-full"
          x-transition:enter-end="translate-y-0"
-         class="glass-dark border-gold-neon rounded-t-3xl w-full max-w-lg p-6 pb-10">
-      <div class="w-10 h-1 bg-gold bg-opacity-30 rounded-full mx-auto mb-5"></div>
+         class="w-full max-w-lg rounded-t-3xl p-6 pb-10"
+         style="background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05);">
+      <div class="w-10 h-1 rounded-full mx-auto mb-5" style="background:rgba(255,255,255,0.15);"></div>
       <template x-if="selectedProducer">
         <div>
-          <div class="cinzel text-gold text-xs tracking-widest uppercase mb-1">Producer Insight</div>
-          <div class="cinzel font-bold text-xl text-bone mb-4" x-text="selectedProducer.strain"></div>
+          <div class="cinzel text-gold/60 text-xs tracking-widest uppercase mb-1">Producer Insight</div>
+          <div class="cinzel font-bold text-xl text-white mb-4" x-text="selectedProducer.strain"></div>
           <div class="grid grid-cols-3 gap-3 mb-4">
-            <div class="glass rounded-xl p-3 text-center">
+            <div class="glass rounded-xl p-3 text-center" style="border-color:rgba(255,255,255,0.06);">
               <div class="cinzel text-gold font-bold text-lg" x-text="selectedProducer.thc"></div>
-              <div class="text-bone-dim text-xs mont mt-1">THC</div>
+              <div class="text-white/35 text-xs mont mt-1">THC</div>
             </div>
-            <div class="glass rounded-xl p-3 text-center">
+            <div class="glass rounded-xl p-3 text-center" style="border-color:rgba(255,255,255,0.06);">
               <div class="cinzel text-gold font-bold text-lg" x-text="selectedProducer.cbd"></div>
-              <div class="text-bone-dim text-xs mont mt-1">CBD</div>
+              <div class="text-white/35 text-xs mont mt-1">CBD</div>
             </div>
-            <div class="glass rounded-xl p-3 text-center">
-              <div class="cinzel text-bone font-bold text-lg" x-text="selectedProducer.type"></div>
-              <div class="text-bone-dim text-xs mont mt-1">Type</div>
+            <div class="glass rounded-xl p-3 text-center" style="border-color:rgba(255,255,255,0.06);">
+              <div class="cinzel text-white/80 font-bold text-lg" x-text="selectedProducer.type"></div>
+              <div class="text-white/35 text-xs mont mt-1">Type</div>
             </div>
           </div>
-          <div class="glass rounded-xl p-4 mb-4">
-            <div class="cinzel text-gold text-xs tracking-wider uppercase mb-2">Producer</div>
-            <div class="text-bone text-sm font-medium mont" x-text="selectedProducer.producer"></div>
-            <div class="text-bone-dim text-xs mont mt-1">🇨🇴 Colombia Origin · Verified Small Batch</div>
+          <div class="glass rounded-xl p-4 mb-4" style="border-color:rgba(255,255,255,0.06);">
+            <div class="cinzel text-gold/60 text-xs tracking-wider uppercase mb-2">Producer</div>
+            <div class="text-white/80 text-sm font-medium mont" x-text="selectedProducer.producer"></div>
+            <div class="text-white/35 text-xs mont mt-1">🇨🇴 Colombia Origin · Verified Small Batch</div>
           </div>
-          <div class="glass rounded-xl p-4 mb-5">
-            <div class="cinzel text-gold text-xs tracking-wider uppercase mb-2">Tasting Notes</div>
-            <div class="text-bone-dim text-sm mont leading-relaxed" x-text="selectedProducer.notes"></div>
+          <div class="glass rounded-xl p-4 mb-5" style="border-color:rgba(255,255,255,0.06);">
+            <div class="cinzel text-gold/60 text-xs tracking-wider uppercase mb-2">Tasting Notes</div>
+            <div class="text-white/55 text-sm mont leading-relaxed" x-text="selectedProducer.notes"></div>
           </div>
-          <button @click="modal=false; tab='register'"
-            class="btn-gold w-full py-3.5 text-sm tracking-widest rounded-xl">
+          <button @click="modal=false; tab='register'" class="btn-gold w-full py-3.5 text-sm tracking-widest rounded-xl">
             Connect with Producer
           </button>
         </div>
@@ -1000,11 +1104,11 @@ function app() {
     form: { name: '', social: '', role: '', email: '' },
 
     regions: [
-      { code: 'CO', flag: '🇨🇴' },
-      { code: 'ES', flag: '🇪🇸' },
-      { code: 'DE', flag: '🇩🇪' },
-      { code: 'US', flag: '🇺🇸' },
-      { code: 'TH', flag: '🇹🇭' },
+      { code: 'CO', flag: '🇨🇴', chapter: 'Colombia Chapter' },
+      { code: 'ES', flag: '🇪🇸', chapter: 'Valencia Node' },
+      { code: 'DE', flag: '🇩🇪', chapter: 'Berlin Edition' },
+      { code: 'US', flag: '🇺🇸', chapter: 'New York Node' },
+      { code: 'TH', flag: '🇹🇭', chapter: 'Bangkok Chapter' },
     ],
 
     categories: ['All', 'Flowers', 'Edibles', 'Extracts', 'Genetics'],
@@ -1046,22 +1150,41 @@ function app() {
     ],
 
     products: [
-      { id: 1, name: 'Reserve Flower 3.5g', price: '$28 USD', badge: 'Flowers', category: 'Flowers', img: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=400&q=70&fit=crop' },
-      { id: 2, name: 'Gold Cartridge 1g', price: '$45 USD', badge: 'Extracts', category: 'Extracts', img: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&q=70&fit=crop' },
-      { id: 3, name: 'Hash Rosin 1g', price: '$60 USD', badge: 'Extracts', category: 'Extracts', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70&fit=crop' },
-      { id: 4, name: 'Tincture 30ml', price: '$35 USD', badge: 'Edibles', category: 'Edibles', img: 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&q=70&fit=crop' },
-      { id: 5, name: 'OZH Seed Pack', price: '$22 USD', badge: 'Genetics', category: 'Genetics', img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&q=70&fit=crop' },
-      { id: 6, name: 'Micro-Dose Gummies', price: '$30 USD', badge: 'Edibles', category: 'Edibles', img: 'https://images.unsplash.com/photo-1562592306-23a5ded8740b?w=400&q=70&fit=crop' },
+      { id: 1, name: 'Reserve Flower 3.5g', price: '$28 USD', cat: 'Flowers',   img: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=400&q=70&fit=crop' },
+      { id: 2, name: 'Gold Cartridge 1g',   price: '$45 USD', cat: 'Extracts',  img: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&q=70&fit=crop' },
+      { id: 3, name: 'Hash Rosin 1g',       price: '$60 USD', cat: 'Extracts',  img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70&fit=crop' },
+      { id: 4, name: 'Tincture 30ml',       price: '$35 USD', cat: 'Edibles',   img: 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&q=70&fit=crop' },
+      { id: 5, name: 'OZH Seed Pack',       price: '$22 USD', cat: 'Genetics',  img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&q=70&fit=crop' },
+      { id: 6, name: 'Micro-Dose Gummies',  price: '$30 USD', cat: 'Edibles',   img: 'https://images.unsplash.com/photo-1562592306-23a5ded8740b?w=400&q=70&fit=crop' },
     ],
+
+    articles: [
+      { id: 1, title: 'The Colombian Renaissance: Inside the New Wave of Artisan Growers', tag: 'Feature', date: 'March 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=300&q=70&fit=crop' },
+      { id: 2, title: 'Terpene Profiles: Why Connoisseurs Are Moving Beyond THC Numbers', tag: 'Science', date: 'February 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=300&q=70&fit=crop' },
+      { id: 3, title: 'Berlin Underground: How Germany\'s Legalization Is Reshaping the Culture', tag: 'Global', date: 'January 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70&fit=crop' },
+      { id: 4, title: 'Hash Rosin vs. Live Resin: The Extract War Is Over', tag: 'Extract', date: 'January 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=300&q=70&fit=crop' },
+    ],
+
+    storeItems: [
+      { id: 1, name: 'OZH Society Tee', price: '$45 USD', memberPrice: '$40 USD', exclusive: true, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=70&fit=crop' },
+      { id: 2, name: 'Raw Paper Pack', price: '$12 USD', memberPrice: '$10 USD', exclusive: false, img: 'https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=400&q=70&fit=crop' },
+      { id: 3, name: 'OZH Grinder Pro', price: '$65 USD', memberPrice: '$58 USD', exclusive: true, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=70&fit=crop' },
+      { id: 4, name: 'Stash Box Obsidian', price: '$80 USD', memberPrice: '$72 USD', exclusive: true, img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70&fit=crop' },
+    ],
+
+    chapterName() {
+      const r = this.regions.find(x => x.code === this.selectedRegion);
+      return r ? r.chapter : 'Colombia Chapter';
+    },
 
     regionFlag() {
       const r = this.regions.find(x => x.code === this.selectedRegion);
-      return r ? r.flag : '🌍';
+      return r ? r.flag : '🇨🇴';
     },
 
     filteredProducts() {
       if (this.activeCategory === 'All') return this.products;
-      return this.products.filter(p => p.category === this.activeCategory);
+      return this.products.filter(p => p.cat === this.activeCategory);
     },
 
     init() {
@@ -1085,8 +1208,11 @@ function app() {
     copyKey(code) {
       navigator.clipboard.writeText(code).catch(() => {});
       this.copiedKey = code;
-      setTimeout(() => { this.copiedKey = null; }, 2200);
       this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+      setTimeout(() => {
+        this.copiedKey = null;
+        this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+      }, 2200);
     },
 
     submitForm() {
@@ -1095,15 +1221,16 @@ function app() {
       if (!this.form.social.trim()) { this.formError = 'Instagram or Telegram handle is required.'; return; }
       if (!this.form.role) { this.formError = 'Please select your role.'; return; }
 
-      var msg = '🌿 *OZH Society Beta Request*\n\n'
+      const msg = '🌿 *OZH Society Beta Request*\n\n'
         + '*Name:* ' + this.form.name + '\n'
         + '*Social:* ' + this.form.social + '\n'
         + '*Role:* ' + this.form.role + '\n'
-        + '*Region:* ' + (this.selectedRegion || 'CO') + '\n'
+        + '*Node:* ' + this.chapterName() + '\n'
         + '*Email:* ' + (this.form.email || '—') + '\n\n'
         + '🔑 Founder Member Status Pending';
 
       this.registered = true;
+      this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
       setTimeout(() => {
         window.open('https://wa.me/573016934949?text=' + encodeURIComponent(msg), '_blank');
       }, 600);
