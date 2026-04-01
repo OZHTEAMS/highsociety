@@ -9,450 +9,204 @@
   <meta name="mobile-web-app-capable" content="yes"/>
   <meta name="theme-color" content="#000000"/>
   <title>OZH Society — Global</title>
-  <meta name="description" content="OZH Society — The world's most innovative cannabis community. Verified producers, global network, exclusive access."/>
+  <meta name="description" content="OZH Society — The world's most innovative cannabis community."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gold: '#D4AF37',
-            'gold-dim': '#9a7e1e',
-            'gold-light': '#eece55',
-            obsidian: '#000000',
-            'surface': '#0a0a0a',
-            'surface-2': '#111111',
-            'surface-3': '#181818',
-            'surface-4': '#222222',
-            snow: '#FFFFFF',
-            'snow-60': 'rgba(255,255,255,0.6)',
-            'snow-30': 'rgba(255,255,255,0.3)',
-            'snow-10': 'rgba(255,255,255,0.1)',
-            'snow-06': 'rgba(255,255,255,0.06)',
-            'snow-03': 'rgba(255,255,255,0.03)',
-          },
-          fontFamily: {
-            cinzel: ['Cinzel', 'serif'],
-            mont: ['Montserrat', 'sans-serif'],
-          },
-        }
-      }
-    }
-  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html, body { height: 100%; overscroll-behavior: none; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #000;
-      color: #fff;
-      overflow: hidden;
-    }
+    body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; overflow: hidden; }
 
-    /* ── SCROLLBAR ── */
-    .scroll-area { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
-    .scroll-area::-webkit-scrollbar { display: none; }
-    * { scrollbar-width: none; }
-
-    /* ── GLASS ── */
-    .glass {
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .glass-gold {
-      background: rgba(212,175,55,0.05);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(212,175,55,0.22);
-    }
-    .glass-nav {
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .glass-top {
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    /* ── TYPOGRAPHY ── */
     .cinzel { font-family: 'Cinzel', serif; }
-    .mont { font-family: 'Montserrat', sans-serif; }
+    .mont   { font-family: 'Montserrat', sans-serif; }
+
+    /* Scroll */
+    .scroll-area { overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+    .scroll-area::-webkit-scrollbar, * { scrollbar-width: none; }
+
+    /* Glass */
+    .glass     { background: rgba(255,255,255,0.04); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); }
+    .glass-top { background: rgba(0,0,0,0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .glass-nav { background: rgba(0,0,0,0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-top: 1px solid rgba(255,255,255,0.06); }
+    .glass-gold { background: rgba(212,175,55,0.05); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(212,175,55,0.2); }
+    .glass-modal { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.08); border-left: 1px solid rgba(255,255,255,0.05); border-right: 1px solid rgba(255,255,255,0.05); }
+
+    /* Gold text gradient */
     .text-gold-grad {
       background: linear-gradient(135deg, #D4AF37 0%, #f0d060 50%, #9a7e1e 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    /* ── BUTTONS ── */
+    /* Buttons */
     .btn-gold {
-      background: linear-gradient(135deg, #D4AF37 0%, #b8941f 100%);
-      color: #000;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      background: linear-gradient(135deg, #D4AF37, #b8941f);
+      color: #000; font-family: 'Cinzel', serif; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
       transition: transform 0.12s cubic-bezier(.22,1,.36,1), box-shadow 0.15s;
-      -webkit-tap-highlight-color: transparent;
     }
-    .btn-gold:active { transform: scale(0.94); box-shadow: 0 0 28px rgba(212,175,55,0.5); }
+    .btn-gold:active { transform: scale(0.93); box-shadow: 0 0 28px rgba(212,175,55,0.5); }
 
     .btn-outline {
-      background: transparent;
-      color: #D4AF37;
-      font-family: 'Cinzel', serif;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      background: transparent; color: #D4AF37; font-family: 'Cinzel', serif; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
       border: 1px solid rgba(212,175,55,0.3);
-      transition: transform 0.12s cubic-bezier(.22,1,.36,1), background 0.18s, border-color 0.18s;
+      transition: transform 0.12s cubic-bezier(.22,1,.36,1), background 0.18s;
     }
-    .btn-outline:active { transform: scale(0.94); background: rgba(212,175,55,0.08); border-color: rgba(212,175,55,0.55); }
+    .btn-outline:active { transform: scale(0.93); background: rgba(212,175,55,0.08); }
 
-    .btn-tg {
-      background: linear-gradient(135deg, #26A5E4, #1a85b8);
-      color: #fff;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      border-radius: 12px;
-      transition: transform 0.12s, box-shadow 0.12s;
-    }
-    .btn-tg:active { transform: scale(0.94); box-shadow: 0 0 20px rgba(38,165,228,0.4); }
+    .btn-tg { background: linear-gradient(135deg, #26A5E4, #1a85b8); color: #fff; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 0.1em; transition: transform 0.12s, box-shadow 0.12s; }
+    .btn-tg:active { transform: scale(0.93); box-shadow: 0 0 20px rgba(38,165,228,0.4); }
+    .btn-wa  { background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; font-family: 'Cinzel', serif; font-weight: 700; letter-spacing: 0.1em; transition: transform 0.12s, box-shadow 0.12s; }
+    .btn-wa:active  { transform: scale(0.93); box-shadow: 0 0 20px rgba(37,211,102,0.4); }
 
-    .btn-wa {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: #fff;
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      border-radius: 12px;
-      transition: transform 0.12s, box-shadow 0.12s;
-    }
-    .btn-wa:active { transform: scale(0.94); box-shadow: 0 0 20px rgba(37,211,102,0.4); }
+    /* Badges */
+    .badge { background: linear-gradient(135deg,#D4AF37,#9a7e1e); color:#000; font-size:0.5rem; font-weight:700; letter-spacing:0.13em; text-transform:uppercase; padding:3px 7px; border-radius:99px; font-family:'Montserrat',sans-serif; white-space:nowrap; }
+    .badge-green { background: linear-gradient(135deg,#1a5c35,#0d3a20); color:#4ade80; font-size:0.5rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; padding:3px 7px; border-radius:99px; font-family:'Montserrat',sans-serif; }
+    .badge-dark { background:rgba(255,255,255,0.07); color:rgba(255,255,255,0.45); font-size:0.5rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; padding:3px 7px; border-radius:99px; font-family:'Montserrat',sans-serif; border:1px solid rgba(255,255,255,0.1); }
 
-    /* ── BADGE ── */
-    .badge {
-      background: linear-gradient(135deg, #D4AF37, #9a7e1e);
-      color: #000;
-      font-size: 0.5rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      padding: 3px 7px;
-      border-radius: 99px;
-      font-family: 'Montserrat', sans-serif;
-      white-space: nowrap;
-    }
-    .badge-dark {
-      background: rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.5);
-      font-size: 0.5rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 3px 7px;
-      border-radius: 99px;
-      font-family: 'Montserrat', sans-serif;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
+    /* Input */
+    .ozh-input { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); color:#fff; font-family:'Montserrat',sans-serif; font-size:0.875rem; font-weight:400; padding:14px 16px; border-radius:10px; outline:none; width:100%; transition:border-color 0.2s, background 0.2s, box-shadow 0.2s; }
+    .ozh-input:focus { border-color:rgba(212,175,55,0.45); background:rgba(255,255,255,0.06); box-shadow:0 0 0 3px rgba(212,175,55,0.07); }
+    .ozh-input::placeholder { color:rgba(255,255,255,0.2); }
+    .ozh-input option { background:#111; color:#fff; }
 
-    /* ── INPUTS ── */
-    .ozh-input {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 400;
-      padding: 14px 16px;
-      border-radius: 10px;
-      outline: none;
-      width: 100%;
-      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-    }
-    .ozh-input:focus {
-      border-color: rgba(212,175,55,0.45);
-      background: rgba(255,255,255,0.06);
-      box-shadow: 0 0 0 3px rgba(212,175,55,0.07);
-    }
-    .ozh-input::placeholder { color: rgba(255,255,255,0.2); }
-    .ozh-input option { background: #111; color: #fff; }
+    /* Category tabs */
+    .cat-tab { font-family:'Cinzel',serif; font-size:0.6rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; padding:7px 15px; border-radius:99px; border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.35); background:transparent; transition:all 0.18s cubic-bezier(.22,1,.36,1); white-space:nowrap; }
+    .cat-tab.active { background:linear-gradient(135deg,#D4AF37,#9a7e1e); color:#000; border-color:transparent; box-shadow:0 0 18px rgba(212,175,55,0.28); }
+    .cat-tab:active { transform:scale(0.92); }
 
-    /* ── FILTER TABS ── */
-    .cat-tab {
-      font-family: 'Cinzel', serif;
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 7px 16px;
-      border-radius: 99px;
-      border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.4);
-      background: transparent;
-      transition: all 0.2s cubic-bezier(.22,1,.36,1);
-      white-space: nowrap;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .cat-tab.active {
-      background: linear-gradient(135deg, #D4AF37 0%, #9a7e1e 100%);
-      color: #000;
-      border-color: transparent;
-      box-shadow: 0 0 18px rgba(212,175,55,0.28);
-    }
-    .cat-tab:active { transform: scale(0.93); }
+    /* Dividers */
+    .gold-line { height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,0.25),transparent); }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes goldPulse {
-      0%, 100% { opacity: 0.5; box-shadow: 0 0 4px rgba(212,175,55,0.4); }
-      50%       { opacity: 1;   box-shadow: 0 0 10px rgba(212,175,55,1); }
-    }
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-6px); }
-    }
-    @keyframes orbDrift {
-      0%   { transform: translate(0,0) scale(1); opacity: 0.5; }
-      33%  { transform: translate(10px,-15px) scale(1.1); opacity: 0.8; }
-      66%  { transform: translate(-8px,10px) scale(0.95); opacity: 0.6; }
-      100% { transform: translate(0,0) scale(1); opacity: 0.5; }
-    }
-    @keyframes copyCheck {
-      0%   { transform: scale(0.5); opacity: 0; }
-      60%  { transform: scale(1.2); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+    /* Nav dot */
+    .nav-dot { width:3px; height:3px; border-radius:50%; background:#D4AF37; box-shadow:0 0 5px rgba(212,175,55,0.8); margin:0 auto; }
 
-    .fade-up-1 { animation: fadeUp 0.6s cubic-bezier(.22,1,.36,1) both; }
-    .fade-up-2 { animation: fadeUp 0.6s 0.1s cubic-bezier(.22,1,.36,1) both; }
-    .fade-up-3 { animation: fadeUp 0.6s 0.2s cubic-bezier(.22,1,.36,1) both; }
-    .fade-up-4 { animation: fadeUp 0.6s 0.3s cubic-bezier(.22,1,.36,1) both; }
-    .gold-dot { animation: goldPulse 2s ease-in-out infinite; }
-    .shimmer-card {
-      background: linear-gradient(90deg, rgba(212,175,55,0) 0%, rgba(212,175,55,0.06) 50%, rgba(212,175,55,0) 100%);
-      background-size: 200% 100%;
-      animation: shimmer 3s infinite;
-    }
-    .float { animation: float 3.5s ease-in-out infinite; }
-    .orb { animation: orbDrift 9s ease-in-out infinite; }
-    .copy-check { animation: copyCheck 0.3s ease forwards; }
+    /* Key card */
+    .key-card { background:linear-gradient(135deg,rgba(212,175,55,0.05),rgba(212,175,55,0.02)); border:1px solid rgba(212,175,55,0.2); border-radius:16px; padding:16px; position:relative; overflow:hidden; }
+    .key-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(212,175,55,0.45),transparent); }
+    .key-code { font-family:'Courier New',monospace; font-size:0.7rem; letter-spacing:0.2em; color:#D4AF37; background:rgba(0,0,0,0.5); border:1px solid rgba(212,175,55,0.18); border-radius:8px; padding:9px 12px; }
 
-    /* ── KEY CARD ── */
-    .key-card {
-      background: linear-gradient(135deg, rgba(212,175,55,0.05) 0%, rgba(212,175,55,0.02) 100%);
-      border: 1px solid rgba(212,175,55,0.2);
-      border-radius: 16px;
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-    .key-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(212,175,55,0.5) 50%, transparent 100%);
-    }
-    .key-code {
-      font-family: 'Courier New', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      color: #D4AF37;
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(212,175,55,0.18);
-      border-radius: 8px;
-      padding: 9px 12px;
-    }
+    /* Region dropdown */
+    .region-menu { position:absolute; top:calc(100% + 10px); right:0; width:170px; background:rgba(8,8,8,0.97); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1px solid rgba(255,255,255,0.1); border-radius:16px; overflow:hidden; z-index:300; box-shadow:0 20px 60px rgba(0,0,0,0.9); }
+    .region-item { display:flex; align-items:center; gap:10px; padding:11px 16px; cursor:pointer; transition:background 0.15s; font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.45); border-bottom:1px solid rgba(255,255,255,0.04); }
+    .region-item:last-child { border-bottom:none; }
+    .region-item.active, .region-item:active { background:rgba(212,175,55,0.1); color:#D4AF37; }
 
-    /* ── REGION MENU ── */
-    .region-menu {
-      position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
-      width: 160px;
-      background: rgba(10,10,10,0.96);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      overflow: hidden;
-      z-index: 200;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-    }
-    .region-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      cursor: pointer;
-      transition: background 0.15s;
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .region-item:last-child { border-bottom: none; }
-    .region-item:active, .region-item.active { background: rgba(212,175,55,0.1); color: #D4AF37; }
+    /* Shimmer */
+    .shimmer { background:linear-gradient(90deg,rgba(212,175,55,0) 0%,rgba(212,175,55,0.06) 50%,rgba(212,175,55,0) 100%); background-size:200% 100%; animation:shimmer 3s infinite; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
-    /* ── STORE EMBED ── */
-    .store-frame {
-      width: 100%;
-      border: none;
-      background: #000;
-      display: block;
-    }
+    /* Animations */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes goldPulse { 0%,100%{opacity:0.5;box-shadow:0 0 4px rgba(212,175,55,0.4)} 50%{opacity:1;box-shadow:0 0 10px rgba(212,175,55,1)} }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+    @keyframes orbDrift { 0%{transform:translate(0,0) scale(1);opacity:0.4} 50%{transform:translate(8px,-12px) scale(1.08);opacity:0.7} 100%{transform:translate(0,0) scale(1);opacity:0.4} }
 
-    /* ── NAV ── */
-    .nav-dot {
-      width: 3px; height: 3px; border-radius: 50%;
-      background: #D4AF37;
-      box-shadow: 0 0 6px rgba(212,175,55,0.8);
-      margin: 0 auto;
-    }
+    .fade-1 { animation:fadeUp 0.55s cubic-bezier(.22,1,.36,1) both; }
+    .fade-2 { animation:fadeUp 0.55s 0.1s cubic-bezier(.22,1,.36,1) both; }
+    .fade-3 { animation:fadeUp 0.55s 0.2s cubic-bezier(.22,1,.36,1) both; }
+    .fade-4 { animation:fadeUp 0.55s 0.3s cubic-bezier(.22,1,.36,1) both; }
+    .gold-pulse { animation:goldPulse 2s ease-in-out infinite; }
+    .float { animation:float 3.5s ease-in-out infinite; }
 
-    /* ── DIVIDER ── */
-    .gold-line {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
-    }
+    /* Ambient */
+    .orb { position:absolute; border-radius:50%; pointer-events:none; filter:blur(80px); animation:orbDrift 9s ease-in-out infinite; }
 
-    /* ── AMBIENT ── */
-    .ambient { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(80px); }
+    /* Line clamp */
+    .clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+    .clamp-3 { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
   </style>
 </head>
-<body x-data="app()" x-init="init()" class="bg-black">
+<body x-data="app()" x-init="init()">
 
-  <!-- ── AMBIENT LIGHT ── -->
+  <!-- ── AMBIENT ── -->
   <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-    <div class="ambient w-96 h-96 orb"
-         style="top:0;left:50%;transform:translateX(-50%);background:radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 70%);"></div>
-    <div class="ambient w-64 h-64"
-         style="bottom:15%;right:-8%;background:radial-gradient(circle, rgba(212,175,55,0.03) 0%, transparent 70%);animation:orbDrift 13s 2s ease-in-out infinite reverse;"></div>
+    <div class="orb w-80 h-80" style="top:-5%;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(212,175,55,0.06) 0%,transparent 70%);"></div>
+    <div class="orb w-56 h-56" style="bottom:10%;right:-10%;background:radial-gradient(circle,rgba(212,175,55,0.04) 0%,transparent 70%);animation-delay:3s;animation-duration:13s;"></div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       REGION ONBOARDING
-  ══════════════════════════════════════ -->
+  <!-- ══════════════════════════════════
+       ONBOARDING — NODE SELECT
+  ══════════════════════════════════ -->
   <div x-show="!regionSelected"
-       x-transition:leave="transition ease-in duration-350"
+       x-transition:leave="transition ease-in duration-300"
        x-transition:leave-start="opacity-100"
        x-transition:leave-end="opacity-0"
        class="fixed inset-0 z-[200] flex flex-col items-center justify-center px-6"
        style="background:#000;">
-
     <div class="text-center max-w-xs w-full">
       <div class="float mb-8">
         <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
-             alt="OZH" class="h-12 w-auto mx-auto" style="mix-blend-mode:screen;"/>
+             alt="OZH" class="h-12 mx-auto" style="mix-blend-mode:screen;"/>
       </div>
-
-      <div class="gold-line mb-6"></div>
-
-      <div class="cinzel text-xs tracking-[0.4em] text-gold-dim uppercase mb-2 fade-up-1">Global Society</div>
-      <h1 class="cinzel font-black text-3xl text-white leading-tight mb-2 fade-up-2">
-        Select Your<br/><span class="text-gold-grad">Node</span>
-      </h1>
-      <p class="text-white/40 text-xs mont leading-relaxed mb-8 fade-up-3">
-        The world's most innovative cannabis community.<br/>Where are you?
-      </p>
-
-      <!-- Region grid -->
-      <div class="grid grid-cols-3 gap-2 mb-4 fade-up-3">
+      <div class="gold-line mb-5"></div>
+      <div class="cinzel text-xs tracking-[0.4em] text-yellow-600 uppercase mb-2 fade-1">Global Society</div>
+      <h1 class="cinzel font-black text-[1.9rem] text-white leading-tight mb-2 fade-2">Select Your<br/><span class="text-gold-grad">Node</span></h1>
+      <p class="text-white/35 text-xs mont leading-relaxed mb-7 fade-3">The world's most innovative cannabis community.</p>
+      <div class="grid grid-cols-3 gap-2 mb-4 fade-3">
         <template x-for="r in regions" :key="r.code">
           <button @click="selectedRegion = r.code"
             class="flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-200"
-            :style="selectedRegion === r.code
-              ? 'background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.45);box-shadow:0 0 18px rgba(212,175,55,0.15);'
-              : 'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);'">
+            :style="selectedRegion===r.code
+              ? 'background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.45);box-shadow:0 0 16px rgba(212,175,55,0.15);'
+              : 'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);'">
             <span class="text-2xl" x-text="r.flag"></span>
-            <span class="cinzel text-xs tracking-widest font-bold"
-                  :class="selectedRegion === r.code ? 'text-gold' : 'text-white/40'"
-                  x-text="r.code"></span>
+            <span class="cinzel text-xs tracking-widest font-bold" :class="selectedRegion===r.code?'text-yellow-400':'text-white/35'" x-text="r.code"></span>
           </button>
         </template>
       </div>
-
-      <!-- Dynamic welcome -->
-      <div x-show="selectedRegion" x-transition class="glass-gold rounded-xl px-4 py-3 mb-6 text-center fade-up-4">
-        <div class="cinzel text-gold text-xs tracking-widest" x-text="'Welcome to the Society.'"></div>
-        <div class="text-white/50 text-xs mont mt-0.5" x-text="'Localizing nodes for ' + chapterName() + '...'"></div>
+      <div x-show="selectedRegion" x-transition class="glass-gold rounded-xl px-4 py-2.5 mb-5 text-center fade-4">
+        <span class="cinzel text-yellow-400 text-xs tracking-widest" x-text="'Localizing nodes for ' + chapterName() + '...'"></span>
       </div>
-
-      <button @click="selectedRegion && (regionSelected = true)"
-        class="btn-gold w-full py-4 text-xs tracking-widest rounded-xl fade-up-4"
-        :class="selectedRegion ? 'opacity-100' : 'opacity-30 pointer-events-none'">
+      <button @click="selectedRegion && (regionSelected=true)"
+        class="btn-gold w-full py-4 text-xs tracking-widest rounded-xl fade-4"
+        :class="selectedRegion?'opacity-100':'opacity-30 pointer-events-none'">
         Enter Society
       </button>
-
-      <div class="gold-line mt-6"></div>
+      <div class="gold-line mt-5"></div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
+  <!-- ══════════════════════════════════
        APP SHELL
-  ══════════════════════════════════════ -->
+  ══════════════════════════════════ -->
   <div class="fixed inset-0 flex flex-col z-10">
 
-    <!-- ── TOP BAR ── -->
+    <!-- TOP BAR -->
     <div class="glass-top flex items-center justify-between px-5 pt-3 pb-3 shrink-0"
-         style="padding-top: max(14px, env(safe-area-inset-top, 14px));">
-
-      <!-- Logo -->
+         style="padding-top:max(14px, env(safe-area-inset-top, 14px));">
       <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
            alt="OZH" class="h-7 w-auto" style="mix-blend-mode:screen;"/>
-
       <div class="flex items-center gap-2">
-        <!-- Live dot -->
         <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);">
-          <div class="w-1.5 h-1.5 rounded-full gold-dot" style="background:#D4AF37;"></div>
-          <span class="cinzel text-white/50 text-xs font-semibold tracking-wider">V3</span>
+          <div class="w-1.5 h-1.5 rounded-full gold-pulse" style="background:#D4AF37;"></div>
+          <span class="cinzel text-white/40 text-xs tracking-wider">V3</span>
         </div>
-
-        <!-- Region flag button -->
-        <div class="relative" x-data="{ open: false }">
-          <button @click="open = !open; $nextTick(() => { if(typeof lucide!=='undefined') lucide.createIcons(); })"
-            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl transition-all"
+        <!-- Node switcher -->
+        <div class="relative" x-data="{open:false}">
+          <button @click="open=!open"
+            class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl"
             style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
             <span class="text-base leading-none" x-text="regionFlag()"></span>
-            <i data-lucide="chevron-down" class="w-3 h-3 text-white/40" :style="open ? 'transform:rotate(180deg);transition:transform 0.2s' : 'transition:transform 0.2s'"></i>
+            <i data-lucide="chevron-down" class="w-3 h-3 text-white/35" style="stroke-width:1.5;" :style="open?'transform:rotate(180deg);transition:0.2s':'transition:0.2s'"></i>
           </button>
-
-          <!-- Dropdown -->
           <div x-show="open"
                x-transition:enter="transition ease-out duration-150"
-               x-transition:enter-start="opacity-0 scale-95 translate-y-1"
+               x-transition:enter-start="opacity-0 scale-95 -translate-y-1"
                x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-               @click.away="open = false"
+               @click.away="open=false"
                class="region-menu">
             <template x-for="r in regions" :key="r.code">
-              <div @click="selectedRegion = r.code; open = false;"
-                class="region-item"
-                :class="selectedRegion === r.code ? 'active' : ''">
+              <div @click="selectedRegion=r.code;open=false;"
+                   class="region-item" :class="selectedRegion===r.code?'active':''">
                 <span class="text-lg" x-text="r.flag"></span>
                 <div>
                   <div class="font-bold" x-text="r.code"></div>
-                  <div class="text-white/30 normal-case" style="font-size:0.55rem;letter-spacing:0.05em;font-family:'Montserrat',sans-serif;" x-text="r.chapter"></div>
+                  <div style="font-size:0.53rem;letter-spacing:0.04em;font-family:'Montserrat',sans-serif;color:rgba(255,255,255,0.3);text-transform:none;" x-text="r.chapter"></div>
                 </div>
               </div>
             </template>
@@ -461,67 +215,58 @@
       </div>
     </div>
 
-    <!-- ── CONTENT ── -->
-    <div class="flex-1 scroll-area relative">
+    <!-- CONTENT -->
+    <div class="flex-1 scroll-area">
 
-      <!-- ════════════════════════
-           EXPLORE
-      ════════════════════════ -->
+      <!-- ════════ EXPLORE ════════ -->
       <div x-show="tab==='explore'"
-           x-transition:enter="transition ease-out duration-180"
-           x-transition:enter-start="opacity-0 translate-y-2"
+           x-transition:enter="transition ease-out duration-150"
+           x-transition:enter-start="opacity-0 translate-y-1"
            x-transition:enter-end="opacity-100 translate-y-0">
 
-        <!-- Hero -->
         <div class="px-5 pt-6 pb-8">
-          <div class="fade-up-1 text-center mb-6">
-            <div class="cinzel text-xs tracking-[0.35em] text-gold/60 uppercase mb-2" x-text="chapterName() + ' · Est. 2026'"></div>
-            <h1 class="cinzel font-black text-[2rem] leading-tight mb-3">
+          <div class="fade-1 text-center mb-6">
+            <div class="cinzel text-xs tracking-[0.35em] text-yellow-700 uppercase mb-2" x-text="chapterName() + ' · Est. 2026'"></div>
+            <h1 class="cinzel font-black text-[1.9rem] leading-tight mb-3">
               <span class="text-gold-grad">A Different Way</span><br/>
               <span class="text-white">to See the Plant.</span>
             </h1>
             <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">The world's most innovative cannabis community. Producers, connoisseurs, culture.</p>
           </div>
-
-          <div class="fade-up-2 flex justify-center gap-3 mb-8">
+          <div class="fade-2 flex justify-center gap-3 mb-8">
             <button @click="tab='register'" class="btn-gold text-xs px-6 py-3 rounded-full">Get Access</button>
             <button @click="tab='society'" class="btn-outline text-xs px-6 py-3 rounded-full">Society</button>
           </div>
-
-          <!-- Stats -->
-          <div class="fade-up-3 glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer-card">
+          <div class="fade-3 glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer">
             <div>
-              <div class="cinzel text-gold font-bold text-2xl">47</div>
-              <div class="text-white/35 text-xs mont mt-0.5">Producers</div>
+              <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">47</div>
+              <div class="text-white/30 text-xs mont mt-0.5">Producers</div>
             </div>
             <div style="border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);">
-              <div class="cinzel text-gold font-bold text-2xl">12</div>
-              <div class="text-white/35 text-xs mont mt-0.5">Strains</div>
+              <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">66</div>
+              <div class="text-white/30 text-xs mont mt-0.5">Products</div>
             </div>
             <div>
-              <div class="cinzel text-gold font-bold text-2xl">5</div>
-              <div class="text-white/35 text-xs mont mt-0.5">Nodes</div>
+              <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">5</div>
+              <div class="text-white/30 text-xs mont mt-0.5">Nodes</div>
             </div>
           </div>
         </div>
 
         <div class="gold-line mx-5 mb-5"></div>
-
-        <!-- Producers section -->
         <div class="px-5 mb-4 flex items-center justify-between">
-          <div class="cinzel text-xs font-semibold tracking-[0.2em] text-gold/80 uppercase">Verified Producers</div>
-          <div class="text-white/30 text-xs mont">Small Batch · Certified</div>
+          <span class="cinzel text-xs font-semibold tracking-[0.2em] uppercase" style="color:#D4AF37;">Verified Producers</span>
+          <span class="text-white/30 text-xs mont">Small Batch · Certified</span>
         </div>
-
         <div class="px-5 space-y-4 pb-6">
           <template x-for="p in producers" :key="p.id">
             <div class="glass rounded-2xl overflow-hidden" style="border-color:rgba(255,255,255,0.07);">
               <div class="relative h-48 overflow-hidden">
                 <img :src="p.img" :alt="p.strain" loading="lazy" class="w-full h-full object-cover" style="filter:saturate(0.5) brightness(0.75);"/>
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 55%);"></div>
-                <div class="absolute top-3 left-3 flex gap-2 flex-wrap">
+                <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,transparent 55%);"></div>
+                <div class="absolute top-3 left-3 flex gap-2">
                   <span class="badge">🇨🇴 Origin</span>
-                  <span x-show="p.verified" class="badge" style="background:linear-gradient(135deg,#1a5c35,#0d3a20);">✓ Verified</span>
+                  <span x-show="p.verified" class="badge-green">✓ Verified</span>
                 </div>
                 <div class="absolute bottom-3 left-3">
                   <div class="cinzel text-white font-bold text-lg leading-tight" x-text="p.strain"></div>
@@ -530,83 +275,65 @@
               </div>
               <div class="p-4">
                 <div class="flex gap-4 text-xs text-white/40 mont mb-3">
-                  <span>THC <span class="text-gold font-semibold" x-text="p.thc"></span></span>
-                  <span>CBD <span class="text-gold font-semibold" x-text="p.cbd"></span></span>
-                  <span>Type <span class="text-white/70 font-medium" x-text="p.type"></span></span>
+                  <span>THC <span class="font-semibold" style="color:#D4AF37;" x-text="p.thc"></span></span>
+                  <span>CBD <span class="font-semibold" style="color:#D4AF37;" x-text="p.cbd"></span></span>
+                  <span>Type <span class="text-white/65 font-medium" x-text="p.type"></span></span>
                 </div>
-                <button @click="openInsight(p)" class="btn-outline w-full rounded-xl py-2.5 text-xs">
-                  View Insights →
-                </button>
+                <button @click="openInsight(p)" class="btn-outline w-full rounded-xl py-2.5 text-xs">View Insights →</button>
               </div>
             </div>
           </template>
         </div>
       </div>
 
-      <!-- ════════════════════════
-           MARKET (VAULT)
-      ════════════════════════ -->
+      <!-- ════════ MARKET ════════ -->
       <div x-show="tab==='market'"
-           x-transition:enter="transition ease-out duration-180"
-           x-transition:enter-start="opacity-0 translate-y-2"
+           x-transition:enter="transition ease-out duration-150"
+           x-transition:enter-start="opacity-0 translate-y-1"
            x-transition:enter-end="opacity-100 translate-y-0">
 
         <div class="px-5 pt-6 pb-4">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-1">Premium Market</div>
+          <div class="cinzel text-xs tracking-[0.3em] text-yellow-700 uppercase mb-1">Premium Market</div>
           <h2 class="cinzel font-bold text-2xl text-white mb-1">The Vault</h2>
-          <p class="text-white/35 text-xs mont">OZH Verified · Global Distribution Network</p>
+          <p class="text-white/35 text-xs mont">OZH Verified · Community Sourced</p>
         </div>
 
-        <!-- Category filter -->
         <div class="px-5 mb-4">
           <div class="flex gap-2 overflow-x-auto pb-1">
             <template x-for="cat in categories" :key="cat">
-              <button @click="activeCategory = cat"
-                :class="activeCategory === cat ? 'cat-tab active' : 'cat-tab'"
-                x-text="cat">
-              </button>
+              <button @click="activeCategory=cat" :class="activeCategory===cat?'cat-tab active':'cat-tab'" x-text="cat"></button>
             </template>
           </div>
         </div>
 
-        <!-- Gate notice -->
         <div class="mx-5 mb-5 glass-gold rounded-2xl p-4 flex items-start gap-3">
           <div class="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
                style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
-            <i data-lucide="shield" class="w-4 h-4 text-gold" style="stroke-width:1.5;"></i>
+            <i data-lucide="shield" class="w-4 h-4" style="color:#D4AF37;stroke-width:1.5;"></i>
           </div>
           <div>
-            <div class="cinzel text-gold text-xs font-semibold tracking-wider mb-1">Level 2 Verification Required</div>
-            <p class="text-white/40 text-xs mont leading-relaxed">Prices are visible. Unlock purchases by verifying via Discord + WhatsApp.</p>
+            <div class="cinzel text-xs font-semibold tracking-wider mb-1" style="color:#D4AF37;">Level 2 Verification Required</div>
+            <p class="text-white/40 text-xs mont leading-relaxed">Tap any product to unlock via <strong class="text-white/70">Telegram + WhatsApp</strong>.</p>
             <button @click="tab='register'" class="btn-gold mt-3 text-xs px-4 py-2 rounded-full">Get Access</button>
           </div>
         </div>
 
-        <!-- Products grid -->
         <div class="px-5 grid grid-cols-2 gap-3 pb-6">
           <template x-for="product in filteredProducts()" :key="product.id">
-            <div @click="openProductModal(product)"
-                 class="glass rounded-2xl overflow-hidden cursor-pointer"
-                 style="border-color:rgba(255,255,255,0.07);">
+            <div @click="openProductModal(product)" class="glass rounded-2xl overflow-hidden cursor-pointer active:scale-95 transition-transform" style="border-color:rgba(255,255,255,0.07);">
               <div class="relative h-36 overflow-hidden">
-                <img :src="product.img" :alt="product.name" loading="lazy" class="w-full h-full object-cover"
-                     style="filter:saturate(0.4) brightness(0.65);"/>
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.92) 0%, transparent 50%);"></div>
-                <div class="absolute top-2 right-2">
-                  <span class="badge" x-text="product.cat"></span>
-                </div>
+                <img :src="product.img" :alt="product.name" loading="lazy" class="w-full h-full object-cover" style="filter:saturate(0.45) brightness(0.65);"/>
+                <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,transparent 50%);"></div>
+                <div class="absolute top-2 right-2"><span class="badge" x-text="product.cat"></span></div>
                 <div class="absolute bottom-2 left-2 right-2">
-                  <div class="cinzel text-white text-xs font-bold leading-tight" x-text="product.name"></div>
+                  <div class="cinzel text-white text-xs font-bold leading-tight clamp-2" x-text="product.name"></div>
                 </div>
               </div>
               <div class="p-3">
-                <div class="cinzel text-gold font-bold text-base mb-2" x-text="product.price"></div>
+                <div class="cinzel font-bold text-sm mb-1.5" style="color:#D4AF37;" x-text="product.price"></div>
                 <div class="flex items-center justify-between">
-                  <span class="text-white/30 mont" style="font-size:0.58rem;letter-spacing:0.06em;">OZH Verified</span>
-                  <div class="w-6 h-6 rounded-full flex items-center justify-center"
-                       style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
-                    <i data-lucide="lock" class="w-3 h-3 text-gold" style="stroke-width:1.5;"></i>
-                  </div>
+                  <span class="text-white/25 mont" style="font-size:0.57rem;letter-spacing:0.06em;">OZH Verified</span>
+                  <i data-lucide="lock" class="w-3.5 h-3.5" style="color:#D4AF37;stroke-width:1.5;"></i>
                 </div>
               </div>
             </div>
@@ -614,165 +341,163 @@
         </div>
       </div>
 
-      <!-- ════════════════════════
-           INSIGHTS (OZH Times Mirror)
-      ════════════════════════ -->
+      <!-- ════════ INSIGHTS (BLOG REAL) ════════ -->
       <div x-show="tab==='insights'"
-           x-transition:enter="transition ease-out duration-180"
-           x-transition:enter-start="opacity-0 translate-y-2"
+           x-transition:enter="transition ease-out duration-150"
+           x-transition:enter-start="opacity-0 translate-y-1"
            x-transition:enter-end="opacity-100 translate-y-0">
 
         <div class="px-5 pt-6 pb-4">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-1">Knowledge Hub</div>
+          <div class="cinzel text-xs tracking-[0.3em] text-yellow-700 uppercase mb-1">Knowledge Hub</div>
           <h2 class="cinzel font-bold text-2xl text-white mb-1">OZH Insights</h2>
-          <p class="text-white/35 text-xs mont">By <span class="text-gold">OZH Times</span> · The Voice of the Culture</p>
+          <p class="text-white/35 text-xs mont">From <span style="color:#D4AF37;">ozhtimes.co</span> · The Voice of the Culture</p>
         </div>
 
-        <!-- OZH Times link card -->
-        <div class="mx-5 mb-4 glass-gold rounded-2xl p-4 flex items-center gap-3">
+        <!-- Articles from real blog -->
+        <div class="px-5 mb-4 space-y-3">
+          <template x-for="art in articles" :key="art.id">
+            <a :href="art.url" target="_blank"
+               class="glass flex items-center gap-3 p-3 rounded-2xl no-underline active:scale-98 transition-transform block"
+               style="border-color:rgba(255,255,255,0.07);">
+              <div class="w-20 h-16 rounded-xl overflow-hidden shrink-0">
+                <img :src="art.img" :alt="art.title" loading="lazy"
+                     class="w-full h-full object-cover"
+                     :style="art.img ? 'filter:saturate(0.4) brightness(0.7);' : ''"
+                     onerror="this.parentElement.style.background='#181818'"
+                     />
+              </div>
+              <div class="flex-1 min-w-0">
+                <span class="badge inline-block mb-1.5" x-text="art.tag"></span>
+                <div class="cinzel text-white text-xs font-semibold leading-tight clamp-2 mb-1" x-text="art.title"></div>
+                <div class="text-white/30 text-xs mont" x-text="art.date"></div>
+              </div>
+              <i data-lucide="external-link" class="w-3.5 h-3.5 text-white/20 shrink-0" style="stroke-width:1.5;"></i>
+            </a>
+          </template>
+        </div>
+
+        <!-- Load more -->
+        <div class="px-5 mb-4">
+          <a href="https://ozhtimes.co/blog" target="_blank"
+             class="btn-outline w-full block text-center text-xs py-3 rounded-xl">
+            Read All Articles at ozhtimes.co →
+          </a>
+        </div>
+
+        <div class="gold-line mx-5 mb-5"></div>
+
+        <!-- Featured banner -->
+        <div class="mx-5 mb-6 glass-gold rounded-2xl p-4 flex items-center gap-3">
           <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
                class="h-9 w-auto" style="mix-blend-mode:screen;" alt="OZH"/>
           <div class="flex-1">
-            <div class="cinzel text-white text-sm font-semibold">ozhtimes.co</div>
+            <div class="cinzel text-white text-sm font-semibold">OZH Times</div>
             <div class="text-white/40 text-xs mont">A Different Way to See the Plant</div>
           </div>
-          <a href="https://ozhtimes.co" target="_blank" class="btn-gold text-xs px-3 py-2 rounded-full" style="font-size:0.6rem;">Open ↗</a>
+          <a href="https://ozhtimes.co" target="_blank" class="btn-gold text-xs px-3 py-2 rounded-full" style="font-size:0.58rem;letter-spacing:0.08em;">Open ↗</a>
+        </div>
+      </div>
+
+      <!-- ════════ STORE (REAL PRODUCTS) ════════ -->
+      <div x-show="tab==='store'"
+           x-transition:enter="transition ease-out duration-150"
+           x-transition:enter-start="opacity-0 translate-y-1"
+           x-transition:enter-end="opacity-100 translate-y-0">
+
+        <div class="px-5 pt-6 pb-4">
+          <div class="cinzel text-xs tracking-[0.3em] text-yellow-700 uppercase mb-1">Official Store</div>
+          <h2 class="cinzel font-bold text-2xl text-white mb-1">OZH Store</h2>
+          <p class="text-white/35 text-xs mont">Premium products · <span style="color:#D4AF37;">Society 10% discount</span> active</p>
         </div>
 
-        <!-- Featured articles (static mirror, styled OZH) -->
+        <!-- App perk banner -->
+        <div class="mx-5 mb-4 shimmer rounded-2xl p-4 flex items-center gap-3"
+             style="background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.03));border:1px solid rgba(212,175,55,0.22);">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center shrink-0"
+               style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);">
+            <i data-lucide="star" class="w-4 h-4" style="color:#D4AF37;stroke-width:1.5;"></i>
+          </div>
+          <div>
+            <div class="cinzel text-xs font-bold tracking-wider" style="color:#D4AF37;">Society Member Perk</div>
+            <p class="text-white/45 text-xs mont mt-0.5">Members see exclusive drops + 10% off. Prices shown below include discount.</p>
+          </div>
+        </div>
+
+        <!-- Store category filter -->
         <div class="px-5 mb-4">
-          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Latest from the Magazine</div>
-          <div class="space-y-3">
-            <template x-for="art in articles" :key="art.id">
-              <a :href="art.url" target="_blank"
-                 class="glass rounded-2xl overflow-hidden flex items-center gap-3 p-3 no-underline active:scale-98 transition-transform"
-                 style="border-color:rgba(255,255,255,0.06);">
-                <img :src="art.img" :alt="art.title" loading="lazy"
-                     class="w-20 h-16 rounded-xl object-cover shrink-0"
-                     style="filter:saturate(0.4) brightness(0.75);"/>
-                <div class="flex-1 min-w-0">
-                  <span class="badge mb-1.5 inline-block" x-text="art.tag"></span>
-                  <div class="cinzel text-white text-xs font-semibold leading-tight line-clamp-2" x-text="art.title"></div>
-                  <div class="text-white/30 text-xs mont mt-1" x-text="art.date"></div>
-                </div>
-              </a>
+          <div class="flex gap-2 overflow-x-auto pb-1">
+            <template x-for="cat in storeCategories" :key="cat">
+              <button @click="activeStoreCategory=cat" :class="activeStoreCategory===cat?'cat-tab active':'cat-tab'" x-text="cat"></button>
             </template>
           </div>
         </div>
 
-        <!-- Embed container -->
-        <div class="mx-5 mb-4">
-          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Live Feed</div>
-          <div class="glass rounded-2xl overflow-hidden" style="border-color:rgba(255,255,255,0.06); height:400px;">
-            <div class="flex flex-col items-center justify-center h-full gap-4 px-6 text-center">
-              <div class="w-12 h-12 rounded-full float flex items-center justify-center"
-                   style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
-                <i data-lucide="rss" class="w-6 h-6 text-gold" style="stroke-width:1.5;"></i>
-              </div>
-              <div>
-                <div class="cinzel text-white text-sm font-semibold mb-1">Full Magazine</div>
-                <p class="text-white/35 text-xs mont leading-relaxed mb-4">Tap below to open OZH Times inside the Society browser for the full editorial experience.</p>
-                <a href="https://ozhtimes.co" target="_blank"
-                   class="btn-gold text-xs px-5 py-2.5 rounded-full inline-block">
-                  Open ozhtimes.co →
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="px-5 pb-6">
-          <div class="gold-line mb-4"></div>
-          <p class="text-white/25 text-center text-xs mont">OZH Times is the media arm of OZH Society.<br/>Content is independently curated.</p>
-        </div>
-      </div>
-
-      <!-- ════════════════════════
-           STORE (OZH Times Mirror)
-      ════════════════════════ -->
-      <div x-show="tab==='store'"
-           x-transition:enter="transition ease-out duration-180"
-           x-transition:enter-start="opacity-0 translate-y-2"
-           x-transition:enter-end="opacity-100 translate-y-0">
-
-        <div class="px-5 pt-6 pb-4">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-1">Society Store</div>
-          <h2 class="cinzel font-bold text-2xl text-white mb-1">OZH Official</h2>
-          <p class="text-white/35 text-xs mont">Merch · Accessories · Culture Objects</p>
-        </div>
-
-        <!-- App-exclusive perk banner -->
-        <div class="mx-5 mb-4 shimmer-card rounded-2xl p-4 flex items-center gap-3"
-             style="background:linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(212,175,55,0.03) 100%);border:1px solid rgba(212,175,55,0.25);">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-               style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);">
-            <i data-lucide="star" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
-          </div>
-          <div>
-            <div class="cinzel text-gold text-xs font-bold tracking-wider">App-Only Perk Active</div>
-            <p class="text-white/50 text-xs mont mt-0.5">Members see exclusive drops + 10% Society discount on all items.</p>
-          </div>
-        </div>
-
-        <!-- Store items -->
+        <!-- Real products grid -->
         <div class="px-5 grid grid-cols-2 gap-3 mb-4">
-          <template x-for="item in storeItems" :key="item.id">
-            <a :href="'https://ozhtimes.co/store'" target="_blank"
-               class="glass rounded-2xl overflow-hidden no-underline active:scale-95 transition-transform"
+          <template x-for="item in filteredStoreProducts()" :key="item.id">
+            <a :href="item.link" target="_blank"
+               class="glass rounded-2xl overflow-hidden no-underline active:scale-95 transition-transform block"
                style="border-color:rgba(255,255,255,0.07);">
-              <div class="relative h-36 overflow-hidden">
-                <img :src="item.img" :alt="item.name" loading="lazy" class="w-full h-full object-cover"
-                     style="filter:saturate(0.3) brightness(0.7);"/>
-                <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 50%);"></div>
-                <div x-show="item.exclusive" class="absolute top-2 left-2">
-                  <span class="badge">⭐ Exclusive</span>
+              <div class="relative h-36 overflow-hidden bg-white/5">
+                <img :src="item.img" :alt="item.name" loading="lazy"
+                     class="w-full h-full object-cover"
+                     style="filter:contrast(1.05) brightness(0.88);"
+                     onerror="this.style.display='none'"/>
+                <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);"></div>
+                <div x-show="item.outOfStock" class="absolute top-2 left-2">
+                  <span class="badge-dark">Out of Stock</span>
+                </div>
+                <div x-show="item.onSale && !item.outOfStock" class="absolute top-2 left-2">
+                  <span class="badge">Sale</span>
                 </div>
                 <div class="absolute bottom-2 left-2 right-2">
-                  <div class="cinzel text-white text-xs font-bold leading-tight" x-text="item.name"></div>
+                  <div class="cinzel text-white text-xs font-bold leading-tight clamp-2" x-text="item.name"></div>
                 </div>
               </div>
               <div class="p-3">
-                <div class="flex items-center justify-between">
+                <div class="flex items-start justify-between gap-1 mb-1">
                   <div>
-                    <div class="cinzel text-gold font-bold text-sm" x-text="item.price"></div>
-                    <div x-show="item.exclusive" class="text-green-400 text-xs mont" style="font-size:0.58rem;">Members: <span x-text="item.memberPrice"></span></div>
+                    <div class="cinzel font-bold text-sm" style="color:#D4AF37;" x-text="memberPrice(item.price)"></div>
+                    <div class="text-white/30 mont" style="font-size:0.57rem;text-decoration:line-through;" x-text="item.price"></div>
                   </div>
-                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-white/25" style="stroke-width:1.5;"></i>
+                  <span class="badge shrink-0 mt-0.5" x-text="item.cat"></span>
+                </div>
+                <div class="flex items-center gap-1 mt-1">
+                  <i data-lucide="external-link" class="w-3 h-3 text-white/20" style="stroke-width:1.5;"></i>
+                  <span class="text-white/25 mont" style="font-size:0.55rem;">ozhtimes.co/store</span>
                 </div>
               </div>
             </a>
           </template>
         </div>
 
-        <div class="mx-5 mb-6">
+        <div class="px-5 mb-6">
           <a href="https://ozhtimes.co/store" target="_blank"
              class="btn-outline w-full block text-center text-xs py-3 rounded-xl">
-            Browse Full Store ↗
+            Browse All 66 Products ↗
           </a>
         </div>
       </div>
 
-      <!-- ════════════════════════
-           SOCIETY
-      ════════════════════════ -->
+      <!-- ════════ SOCIETY ════════ -->
       <div x-show="tab==='society'"
-           x-transition:enter="transition ease-out duration-180"
-           x-transition:enter-start="opacity-0 translate-y-2"
+           x-transition:enter="transition ease-out duration-150"
+           x-transition:enter-start="opacity-0 translate-y-1"
            x-transition:enter-end="opacity-100 translate-y-0">
 
         <div class="px-5 pt-6 pb-4 text-center">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-3">Inner Circle</div>
+          <div class="cinzel text-xs tracking-[0.3em] text-yellow-700 uppercase mb-3">Inner Circle</div>
           <h2 class="cinzel font-black text-2xl text-gold-grad mb-2">OZH Society</h2>
           <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">The world's most innovative cannabis community. By invitation — or beta access.</p>
         </div>
 
-        <!-- Founder card -->
-        <div class="mx-5 mb-4 glass-gold rounded-2xl p-5 text-center shimmer-card">
+        <!-- Founder -->
+        <div class="mx-5 mb-4 glass-gold rounded-2xl p-5 text-center shimmer">
           <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3 float"
                style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.25);">
-            <i data-lucide="shield-check" class="w-8 h-8 text-gold" style="stroke-width:1.5;"></i>
+            <i data-lucide="shield-check" class="w-8 h-8" style="color:#D4AF37;stroke-width:1.5;"></i>
           </div>
-          <div class="cinzel text-gold font-bold text-sm tracking-widest uppercase mb-1">Founder Verified</div>
+          <div class="cinzel font-bold text-sm tracking-widest uppercase mb-1" style="color:#D4AF37;">Founder Verified</div>
           <div class="text-white text-sm font-medium mont mb-1">Hosber Valbuena</div>
           <div class="text-white/40 text-xs mont">OZH Society · Founding Member</div>
           <div class="mt-3 flex justify-center gap-2 flex-wrap">
@@ -781,42 +506,35 @@
           </div>
         </div>
 
-        <!-- Verification paths -->
+        <!-- Community links -->
         <div class="px-5 mb-4">
-          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Verification Paths</div>
+          <div class="cinzel text-xs tracking-[0.2em] text-yellow-700 uppercase mb-3">Join the Network</div>
           <div class="space-y-3">
-
-            <!-- Telegram -->
             <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                   style="background:rgba(38,165,228,0.1);border:1px solid rgba(38,165,228,0.25);">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(38,165,228,0.1);border:1px solid rgba(38,165,228,0.25);">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="#26A5E4"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               </div>
               <div class="flex-1">
-                <div class="cinzel text-white text-sm font-semibold">Join Telegram</div>
-                <div class="text-white/35 text-xs mont mt-0.5">@ozhtimes · Community channel</div>
+                <div class="cinzel text-white text-sm font-semibold">Telegram Community</div>
+                <div class="text-white/35 text-xs mont mt-0.5">@ozhtimes · Channel & Updates</div>
               </div>
-              <a href="https://t.me/ozhtimes" target="_blank" class="btn-tg text-xs px-3 py-2 cinzel font-bold tracking-wider">Join</a>
+              <a href="https://t.me/ozhtimes" target="_blank" class="btn-tg text-xs px-3 py-2 rounded-lg cinzel font-bold tracking-wider">Join</a>
             </div>
 
-            <!-- WhatsApp Concierge -->
             <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                   style="background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);">
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
               </div>
               <div class="flex-1">
                 <div class="cinzel text-white text-sm font-semibold">WhatsApp Concierge</div>
-                <div class="text-white/35 text-xs mont mt-0.5">+57 301 693 4949 · Direct access</div>
+                <div class="text-white/35 text-xs mont mt-0.5">+57 301 693 4949</div>
               </div>
-              <a href="https://wa.me/573016934949" target="_blank" class="btn-wa text-xs px-3 py-2 cinzel font-bold tracking-wider">Chat</a>
+              <a href="https://wa.me/573016934949" target="_blank" class="btn-wa text-xs px-3 py-2 rounded-lg cinzel font-bold tracking-wider">Chat</a>
             </div>
 
-            <!-- Producer verify -->
             <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                   style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
-                <i data-lucide="badge-check" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+                <i data-lucide="badge-check" class="w-5 h-5" style="color:#D4AF37;stroke-width:1.5;"></i>
               </div>
               <div class="flex-1">
                 <div class="cinzel text-white text-sm font-semibold">Producer Verification</div>
@@ -825,11 +543,9 @@
               <button @click="tab='register'" class="btn-outline text-xs px-3 py-2 rounded-lg">Apply</button>
             </div>
 
-            <!-- Founder count -->
             <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
-              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                   style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
-                <i data-lucide="users" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
+              <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
+                <i data-lucide="users" class="w-5 h-5" style="color:#D4AF37;stroke-width:1.5;"></i>
               </div>
               <div class="flex-1">
                 <div class="cinzel text-white text-sm font-semibold">Founder Status</div>
@@ -842,7 +558,7 @@
 
         <!-- Invite Vault -->
         <div class="px-5 mb-6">
-          <div class="cinzel text-xs tracking-[0.2em] text-gold/60 uppercase mb-3">Invite Vault</div>
+          <div class="cinzel text-xs tracking-[0.2em] text-yellow-700 uppercase mb-3">Invite Vault</div>
           <div class="key-card">
             <div class="flex items-center justify-between mb-3">
               <div class="cinzel text-white text-sm font-semibold">Your Keys</div>
@@ -853,10 +569,10 @@
                 <div class="flex items-center gap-3">
                   <div class="key-code flex-1" x-text="key.code"></div>
                   <button @click="copyKey(key.code)"
-                    class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 transition-transform active:scale-90"
+                    class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 active:scale-90 transition-transform"
                     style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
-                    <i x-show="copiedKey !== key.code" data-lucide="copy" class="w-4 h-4 text-gold" style="stroke-width:1.5;"></i>
-                    <i x-show="copiedKey === key.code" data-lucide="check" class="w-4 h-4 text-green-400 copy-check" style="stroke-width:1.5;"></i>
+                    <i x-show="copiedKey!==key.code" data-lucide="copy" class="w-4 h-4" style="color:#D4AF37;stroke-width:1.5;"></i>
+                    <i x-show="copiedKey===key.code" data-lucide="check" class="w-4 h-4 text-green-400" style="stroke-width:1.5;"></i>
                   </button>
                 </div>
               </template>
@@ -866,166 +582,117 @@
         </div>
       </div>
 
-      <!-- ════════════════════════
-           REGISTER
-      ════════════════════════ -->
+      <!-- ════════ REGISTER ════════ -->
       <div x-show="tab==='register'"
-           x-transition:enter="transition ease-out duration-180"
-           x-transition:enter-start="opacity-0 translate-y-2"
+           x-transition:enter="transition ease-out duration-150"
+           x-transition:enter-start="opacity-0 translate-y-1"
            x-transition:enter-end="opacity-100 translate-y-0">
-
         <div class="px-5 pt-6 pb-4 text-center">
-          <div class="cinzel text-xs tracking-[0.3em] text-gold/60 uppercase mb-3">Beta Access</div>
+          <div class="cinzel text-xs tracking-[0.3em] text-yellow-700 uppercase mb-3">Beta Access</div>
           <h2 class="cinzel font-black text-2xl text-white mb-2">Join the Underground.</h2>
-          <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">No invite code during Beta. Founder status for first 100.</p>
+          <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">No invite code during Beta. Founder status for the first 100.</p>
         </div>
-
         <div class="px-5 pb-6" x-show="!registered">
           <div class="glass rounded-2xl p-5 space-y-4" style="border-color:rgba(255,255,255,0.07);">
             <div>
-              <label class="cinzel text-xs text-gold tracking-widest uppercase block mb-2">Full Name *</label>
+              <label class="cinzel text-xs tracking-widest uppercase block mb-2" style="color:#D4AF37;">Full Name *</label>
               <input x-model="form.name" type="text" placeholder="Your name" class="ozh-input"/>
             </div>
             <div>
-              <label class="cinzel text-xs text-gold tracking-widest uppercase block mb-2">Instagram / Telegram *</label>
+              <label class="cinzel text-xs tracking-widest uppercase block mb-2" style="color:#D4AF37;">Instagram / Telegram *</label>
               <input x-model="form.social" type="text" placeholder="@handle" class="ozh-input"/>
             </div>
             <div>
-              <label class="cinzel text-xs text-gold tracking-widest uppercase block mb-2">Role *</label>
+              <label class="cinzel text-xs tracking-widest uppercase block mb-2" style="color:#D4AF37;">Role *</label>
               <select x-model="form.role" class="ozh-input">
                 <option value="">Select your role...</option>
                 <option value="Producer">🌱 Producer</option>
-                <option value="Consumer">👤 Connoisseur</option>
+                <option value="Connoisseur">👤 Connoisseur</option>
                 <option value="Partner">🤝 Partner / Business</option>
                 <option value="Investor">💼 Investor</option>
                 <option value="Media">📸 Media / Creator</option>
               </select>
             </div>
             <div>
-              <label class="cinzel text-xs text-gold tracking-widest uppercase block mb-2">Email (optional)</label>
+              <label class="cinzel text-xs tracking-widest uppercase block mb-2" style="color:#D4AF37;">Email (optional)</label>
               <input x-model="form.email" type="email" placeholder="you@email.com" class="ozh-input"/>
             </div>
             <div x-show="formError" class="text-red-400 text-xs text-center mont" x-text="formError"></div>
-            <button @click="submitForm()" class="btn-gold w-full py-4 text-xs tracking-widest rounded-xl">
-              Request Beta Access
-            </button>
+            <button @click="submitForm()" class="btn-gold w-full py-4 text-xs tracking-widest rounded-xl">Request Beta Access</button>
             <p class="text-white/20 text-center mont" style="font-size:0.58rem;letter-spacing:0.07em;">By joining you agree to OZH Society's community guidelines.</p>
           </div>
         </div>
-
-        <!-- Success -->
         <div x-show="registered" class="px-5 pb-6 text-center">
-          <div class="glass-gold rounded-2xl p-8" style="">
+          <div class="glass-gold rounded-2xl p-8">
             <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-5 float"
                  style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.25);">
-              <i data-lucide="shield-check" class="w-10 h-10 text-gold" style="stroke-width:1.5;"></i>
+              <i data-lucide="shield-check" class="w-10 h-10" style="color:#D4AF37;stroke-width:1.5;"></i>
             </div>
-            <div class="cinzel text-gold font-black text-xl tracking-wider mb-2">Welcome to the Underground.</div>
+            <div class="cinzel font-black text-xl tracking-wider mb-2" style="color:#D4AF37;">Welcome to the Underground.</div>
             <div class="cinzel text-white text-sm mb-4">Founder Status Pending.</div>
             <p class="text-white/40 text-xs mont leading-relaxed mb-6">You're in the first 100. We'll reach out via WhatsApp to complete verification and activate your Founder badge.</p>
             <div class="flex flex-col gap-3">
               <button @click="tab='explore'" class="btn-gold text-xs px-6 py-3 rounded-full">Explore the Society</button>
-              <a href="https://t.me/ozhtimes" target="_blank" class="btn-tg text-xs px-6 py-3 text-center cinzel font-bold tracking-wider rounded-full">
-                Join Telegram → @ozhtimes
-              </a>
+              <a href="https://t.me/ozhtimes" target="_blank" class="btn-tg text-xs px-6 py-3 text-center cinzel font-bold tracking-wider rounded-full">Join Telegram → @ozhtimes</a>
             </div>
           </div>
         </div>
       </div>
 
-    </div><!-- end scroll area -->
+    </div><!-- end content -->
 
     <!-- ── BOTTOM NAV ── -->
-    <div class="glass-nav shrink-0" style="padding-bottom: env(safe-area-inset-bottom, 8px);">
+    <div class="glass-nav shrink-0" style="padding-bottom:env(safe-area-inset-bottom,8px);">
       <div class="grid grid-cols-5 px-1 pt-2 pb-1">
-
-        <button @click="tab='explore'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="compass" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='explore' ? 'text-gold' : 'text-white/30'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='explore' ? 'text-gold' : 'text-white/30'">Explore</span>
-          <div class="nav-dot" x-show="tab==='explore'"></div>
-          <div class="w-1 h-1" x-show="tab!=='explore'"></div>
-        </button>
-
-        <button @click="tab='market'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="shopping-bag" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='market' ? 'text-gold' : 'text-white/30'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='market' ? 'text-gold' : 'text-white/30'">Market</span>
-          <div class="nav-dot" x-show="tab==='market'"></div>
-          <div class="w-1 h-1" x-show="tab!=='market'"></div>
-        </button>
-
-        <button @click="tab='insights'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="newspaper" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='insights' ? 'text-gold' : 'text-white/30'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='insights' ? 'text-gold' : 'text-white/30'">Insights</span>
-          <div class="nav-dot" x-show="tab==='insights'"></div>
-          <div class="w-1 h-1" x-show="tab!=='insights'"></div>
-        </button>
-
-        <button @click="tab='store'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="tag" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='store' ? 'text-gold' : 'text-white/30'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='store' ? 'text-gold' : 'text-white/30'">Store</span>
-          <div class="nav-dot" x-show="tab==='store'"></div>
-          <div class="w-1 h-1" x-show="tab!=='store'"></div>
-        </button>
-
-        <button @click="tab='society'" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
-          <i data-lucide="users" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :class="tab==='society' ? 'text-gold' : 'text-white/30'"></i>
-          <span class="cinzel text-xs tracking-wider transition-colors" style="font-size:0.55rem;" :class="tab==='society' ? 'text-gold' : 'text-white/30'">Society</span>
-          <div class="nav-dot" x-show="tab==='society'"></div>
-          <div class="w-1 h-1" x-show="tab!=='society'"></div>
-        </button>
-
+        <template x-for="nav in navItems" :key="nav.tab">
+          <button @click="tab=nav.tab" class="flex flex-col items-center gap-0.5 py-2 px-1 active:scale-90 transition-transform">
+            <i :data-lucide="nav.icon" class="w-5 h-5 transition-colors" style="stroke-width:1.5;" :style="tab===nav.tab?'color:#D4AF37;':'color:rgba(255,255,255,0.28);'"></i>
+            <span class="cinzel tracking-wider transition-colors" style="font-size:0.53rem;" :style="tab===nav.tab?'color:#D4AF37;':'color:rgba(255,255,255,0.28);'" x-text="nav.label"></span>
+            <div class="nav-dot" x-show="tab===nav.tab"></div>
+            <div class="w-1 h-1" x-show="tab!==nav.tab"></div>
+          </button>
+        </template>
       </div>
     </div>
 
   </div>
 
-  <!-- ══════════════════════════════════════
-       PRODUCT GATE MODAL
-  ══════════════════════════════════════ -->
+  <!-- ════════ PRODUCT GATE MODAL ════════ -->
   <div x-show="productModal"
-       x-transition:enter="transition ease-out duration-200"
-       x-transition:enter-start="opacity-0"
-       x-transition:enter-end="opacity-100"
+       x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
        @click.self="productModal=false"
        class="fixed inset-0 z-[60] flex items-end justify-center"
-       style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);">
+       style="background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);">
     <div x-show="productModal"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="translate-y-full"
-         x-transition:enter-end="translate-y-0"
-         class="w-full max-w-lg rounded-t-3xl p-6 pb-10"
-         style="background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05);">
-      <div class="w-10 h-1 rounded-full mx-auto mb-5" style="background:rgba(255,255,255,0.15);"></div>
+         x-transition:enter="transition ease-out duration-280" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
+         class="glass-modal w-full max-w-lg rounded-t-3xl p-6 pb-10">
+      <div class="w-10 h-1 rounded-full mx-auto mb-5" style="background:rgba(255,255,255,0.12);"></div>
       <template x-if="selectedProduct">
         <div>
           <div class="flex items-start gap-4 mb-5">
-            <img :src="selectedProduct.img" :alt="selectedProduct.name"
-                 class="w-20 h-20 rounded-2xl object-cover shrink-0"
-                 style="filter:saturate(0.4) brightness(0.7);"/>
+            <div class="w-20 h-20 rounded-2xl overflow-hidden shrink-0 bg-white/5">
+              <img :src="selectedProduct.img" :alt="selectedProduct.name"
+                   class="w-full h-full object-cover" style="filter:contrast(1.05) brightness(0.85);"/>
+            </div>
             <div class="flex-1">
-              <span class="badge mb-1.5 inline-block" x-text="selectedProduct.cat"></span>
+              <span class="badge inline-block mb-1" x-text="selectedProduct.cat"></span>
               <div class="cinzel font-bold text-xl text-white" x-text="selectedProduct.name"></div>
-              <div class="cinzel text-gold font-bold text-lg mt-0.5" x-text="selectedProduct.price"></div>
+              <div class="cinzel font-bold text-lg mt-0.5" style="color:#D4AF37;" x-text="selectedProduct.price"></div>
             </div>
           </div>
-
           <div class="glass rounded-2xl p-4 mb-5 text-center" style="border-color:rgba(212,175,55,0.15);">
-            <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2"
-                 style="background:rgba(212,175,55,0.08);border:1px solid rgba(212,175,55,0.2);">
-              <i data-lucide="shield" class="w-5 h-5 text-gold" style="stroke-width:1.5;"></i>
-            </div>
+            <i data-lucide="shield" class="w-8 h-8 mx-auto mb-2" style="color:#D4AF37;stroke-width:1.5;"></i>
             <div class="cinzel text-white text-sm font-bold mb-1">Level 2 Verification Required</div>
-            <p class="text-white/40 text-xs mont leading-relaxed">Discord + WhatsApp verification required to access this product.</p>
+            <p class="text-white/40 text-xs mont leading-relaxed">Discord + Telegram + WhatsApp verification unlocks this product.</p>
           </div>
-
           <div class="flex flex-col gap-3">
             <a href="https://t.me/ozhtimes" target="_blank"
-               class="btn-tg w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold">
+               class="btn-tg w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold rounded-xl">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
               Verify via Telegram
             </a>
             <a href="https://wa.me/573016934949" target="_blank"
-               class="btn-wa w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold">
+               class="btn-wa w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold rounded-xl">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
               Verify via WhatsApp
             </a>
@@ -1035,53 +702,44 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════
-       PRODUCER INSIGHT MODAL
-  ══════════════════════════════════════ -->
+  <!-- ════════ PRODUCER INSIGHT MODAL ════════ -->
   <div x-show="modal"
-       x-transition:enter="transition ease-out duration-200"
-       x-transition:enter-start="opacity-0"
-       x-transition:enter-end="opacity-100"
+       x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
        @click.self="modal=false"
        class="fixed inset-0 z-[60] flex items-end justify-center"
-       style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);">
+       style="background:rgba(0,0,0,0.9);backdrop-filter:blur(12px);">
     <div x-show="modal"
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="translate-y-full"
-         x-transition:enter-end="translate-y-0"
-         class="w-full max-w-lg rounded-t-3xl p-6 pb-10"
-         style="background:#0a0a0a;border-top:1px solid rgba(255,255,255,0.08);border-left:1px solid rgba(255,255,255,0.05);border-right:1px solid rgba(255,255,255,0.05);">
-      <div class="w-10 h-1 rounded-full mx-auto mb-5" style="background:rgba(255,255,255,0.15);"></div>
+         x-transition:enter="transition ease-out duration-280" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
+         class="glass-modal w-full max-w-lg rounded-t-3xl p-6 pb-10">
+      <div class="w-10 h-1 rounded-full mx-auto mb-5" style="background:rgba(255,255,255,0.12);"></div>
       <template x-if="selectedProducer">
         <div>
-          <div class="cinzel text-gold/60 text-xs tracking-widest uppercase mb-1">Producer Insight</div>
+          <div class="cinzel text-yellow-700 text-xs tracking-widest uppercase mb-1">Producer Insight</div>
           <div class="cinzel font-bold text-xl text-white mb-4" x-text="selectedProducer.strain"></div>
           <div class="grid grid-cols-3 gap-3 mb-4">
             <div class="glass rounded-xl p-3 text-center" style="border-color:rgba(255,255,255,0.06);">
-              <div class="cinzel text-gold font-bold text-lg" x-text="selectedProducer.thc"></div>
-              <div class="text-white/35 text-xs mont mt-1">THC</div>
+              <div class="cinzel font-bold text-lg" style="color:#D4AF37;" x-text="selectedProducer.thc"></div>
+              <div class="text-white/30 text-xs mont mt-1">THC</div>
             </div>
             <div class="glass rounded-xl p-3 text-center" style="border-color:rgba(255,255,255,0.06);">
-              <div class="cinzel text-gold font-bold text-lg" x-text="selectedProducer.cbd"></div>
-              <div class="text-white/35 text-xs mont mt-1">CBD</div>
+              <div class="cinzel font-bold text-lg" style="color:#D4AF37;" x-text="selectedProducer.cbd"></div>
+              <div class="text-white/30 text-xs mont mt-1">CBD</div>
             </div>
             <div class="glass rounded-xl p-3 text-center" style="border-color:rgba(255,255,255,0.06);">
-              <div class="cinzel text-white/80 font-bold text-lg" x-text="selectedProducer.type"></div>
-              <div class="text-white/35 text-xs mont mt-1">Type</div>
+              <div class="cinzel text-white/70 font-bold text-lg" x-text="selectedProducer.type"></div>
+              <div class="text-white/30 text-xs mont mt-1">Type</div>
             </div>
           </div>
           <div class="glass rounded-xl p-4 mb-4" style="border-color:rgba(255,255,255,0.06);">
-            <div class="cinzel text-gold/60 text-xs tracking-wider uppercase mb-2">Producer</div>
-            <div class="text-white/80 text-sm font-medium mont" x-text="selectedProducer.producer"></div>
-            <div class="text-white/35 text-xs mont mt-1">🇨🇴 Colombia Origin · Verified Small Batch</div>
+            <div class="cinzel text-yellow-700 text-xs tracking-wider uppercase mb-2">Producer</div>
+            <div class="text-white/75 text-sm font-medium mont" x-text="selectedProducer.producer"></div>
+            <div class="text-white/30 text-xs mont mt-1">🇨🇴 Colombia Origin · Verified Small Batch</div>
           </div>
           <div class="glass rounded-xl p-4 mb-5" style="border-color:rgba(255,255,255,0.06);">
-            <div class="cinzel text-gold/60 text-xs tracking-wider uppercase mb-2">Tasting Notes</div>
-            <div class="text-white/55 text-sm mont leading-relaxed" x-text="selectedProducer.notes"></div>
+            <div class="cinzel text-yellow-700 text-xs tracking-wider uppercase mb-2">Tasting Notes</div>
+            <div class="text-white/50 text-sm mont leading-relaxed" x-text="selectedProducer.notes"></div>
           </div>
-          <button @click="modal=false; tab='register'" class="btn-gold w-full py-3.5 text-sm tracking-widest rounded-xl">
-            Connect with Producer
-          </button>
+          <button @click="modal=false;tab='register'" class="btn-gold w-full py-3.5 text-sm tracking-widest rounded-xl">Connect with Producer</button>
         </div>
       </template>
     </div>
@@ -1101,126 +759,122 @@ function app() {
     regionSelected: false,
     selectedRegion: 'CO',
     activeCategory: 'All',
+    activeStoreCategory: 'All',
     form: { name: '', social: '', role: '', email: '' },
+
+    navItems: [
+      { tab: 'explore',  icon: 'compass',      label: 'Explore'  },
+      { tab: 'market',   icon: 'shopping-bag',  label: 'Market'   },
+      { tab: 'insights', icon: 'newspaper',     label: 'Insights' },
+      { tab: 'store',    icon: 'tag',           label: 'Store'    },
+      { tab: 'society',  icon: 'users',         label: 'Society'  },
+    ],
 
     regions: [
       { code: 'CO', flag: '🇨🇴', chapter: 'Colombia Chapter' },
-      { code: 'ES', flag: '🇪🇸', chapter: 'Valencia Node' },
-      { code: 'DE', flag: '🇩🇪', chapter: 'Berlin Edition' },
-      { code: 'US', flag: '🇺🇸', chapter: 'New York Node' },
-      { code: 'TH', flag: '🇹🇭', chapter: 'Bangkok Chapter' },
+      { code: 'ES', flag: '🇪🇸', chapter: 'Valencia Node'    },
+      { code: 'DE', flag: '🇩🇪', chapter: 'Berlin Edition'   },
+      { code: 'US', flag: '🇺🇸', chapter: 'New York Node'    },
+      { code: 'TH', flag: '🇹🇭', chapter: 'Bangkok Chapter'  },
     ],
 
     categories: ['All', 'Flowers', 'Edibles', 'Extracts', 'Genetics'],
+    storeCategories: ['All', 'Edibles', 'Disposables', 'Smoke', 'Extracts', 'Merch', 'Vapes'],
 
     inviteKeys: [
-      { code: 'OZH-2026-ALPHA' },
+      { code: 'OZH-2026-ALPHA'  },
       { code: 'OZH-2026-SIERRA' },
-      { code: 'OZH-2026-GOLD3' },
+      { code: 'OZH-2026-GOLD3'  },
     ],
 
     producers: [
-      {
-        id: 1,
-        strain: 'Sierra Nevada OG',
-        producer: 'Finca La Cumbre · Bogotá',
-        thc: '24%', cbd: '0.8%', type: 'Indica',
-        verified: true,
-        img: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=600&q=80&fit=crop',
-        notes: 'Deep earthy tones with notes of pine and dark chocolate. Long-lasting body relaxation, cultivated at 2600m altitude in the Colombian highlands.'
-      },
-      {
-        id: 2,
-        strain: 'Colombian Gold Reserve',
-        producer: 'Cooperativa Verde · Medellín',
-        thc: '18%', cbd: '1.2%', type: 'Sativa',
-        verified: true,
-        img: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=600&q=80&fit=crop',
-        notes: 'The legendary landrace. Bright citrus and tropical fruit profile. Energetic and creative, grown in the Andes with zero pesticides.'
-      },
-      {
-        id: 3,
-        strain: 'Medellín Moonrock',
-        producer: 'Casa Cannábica · Medellín',
-        thc: '28%', cbd: '0.4%', type: 'Hybrid',
-        verified: false,
-        img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop',
-        notes: 'Premium concentrate-coated flower. Intense terpene profile of vanilla and spice. Only 50 units per batch. Verification pending.'
-      }
+      { id:1, strain:'Sierra Nevada OG',       producer:'Finca La Cumbre · Bogotá',     thc:'24%', cbd:'0.8%', type:'Indica',  verified:true,  img:'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=600&q=80&fit=crop', notes:'Deep earthy tones with notes of pine and dark chocolate. Long-lasting body relaxation, cultivated at 2600m altitude in the Colombian highlands.' },
+      { id:2, strain:'Colombian Gold Reserve', producer:'Cooperativa Verde · Medellín', thc:'18%', cbd:'1.2%', type:'Sativa',  verified:true,  img:'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=600&q=80&fit=crop', notes:'The legendary landrace. Bright citrus and tropical fruit profile. Energetic and creative, grown in the Andes with zero pesticides.' },
+      { id:3, strain:'Medellín Moonrock',       producer:'Casa Cannábica · Medellín',   thc:'28%', cbd:'0.4%', type:'Hybrid',  verified:false, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop', notes:'Premium concentrate-coated flower. Intense terpene profile of vanilla and spice. Only 50 units per batch. Verification pending.' },
     ],
 
+    // Market vault products (community sourced)
     products: [
-      { id: 1, name: 'Reserve Flower 3.5g', price: '$28 USD', cat: 'Flowers',   img: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=400&q=70&fit=crop' },
-      { id: 2, name: 'Gold Cartridge 1g',   price: '$45 USD', cat: 'Extracts',  img: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&q=70&fit=crop' },
-      { id: 3, name: 'Hash Rosin 1g',       price: '$60 USD', cat: 'Extracts',  img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70&fit=crop' },
-      { id: 4, name: 'Tincture 30ml',       price: '$35 USD', cat: 'Edibles',   img: 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&q=70&fit=crop' },
-      { id: 5, name: 'OZH Seed Pack',       price: '$22 USD', cat: 'Genetics',  img: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&q=70&fit=crop' },
-      { id: 6, name: 'Micro-Dose Gummies',  price: '$30 USD', cat: 'Edibles',   img: 'https://images.unsplash.com/photo-1562592306-23a5ded8740b?w=400&q=70&fit=crop' },
+      { id:1, name:'Reserve Flower 3.5g',  price:'$28 USD', cat:'Flowers',  img:'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=400&q=70&fit=crop' },
+      { id:2, name:'Gold Cartridge 1g',    price:'$45 USD', cat:'Extracts', img:'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&q=70&fit=crop' },
+      { id:3, name:'Hash Rosin 1g',        price:'$60 USD', cat:'Extracts', img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70&fit=crop' },
+      { id:4, name:'Tincture 30ml',        price:'$35 USD', cat:'Edibles',  img:'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=400&q=70&fit=crop' },
+      { id:5, name:'OZH Seed Pack',        price:'$22 USD', cat:'Genetics', img:'https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=400&q=70&fit=crop' },
+      { id:6, name:'Micro-Dose Gummies',   price:'$30 USD', cat:'Edibles',  img:'https://images.unsplash.com/photo-1562592306-23a5ded8740b?w=400&q=70&fit=crop' },
     ],
 
+    // REAL products scraped from ozhtimes.co/store
+    storeProducts: [
+      { id:1,  name:'710 Hash Rosin Gummies',           price:'$ 200.000',  cat:'Edibles',     outOfStock:true,  onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/04/SITIO-WEB-NUEVAS-300x300.jpg',       link:'https://ozhtimes.co/product/710-hash-rosin-gummies/'           },
+      { id:2,  name:'Ace Disposable Vape',               price:'$ 240.000',  cat:'Disposables', outOfStock:false, onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/02/crybaby-300x300.png',                link:'https://ozhtimes.co/product/ace-disposable-vape/'              },
+      { id:3,  name:'Amos Peelerz Gummies 120gr',        price:'$ 32.000',   cat:'Edibles',     outOfStock:true,  onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/09/PEELERZ-2-300x300.png',              link:'https://ozhtimes.co/product/amos-peelerz-gummies-120gr/'       },
+      { id:4,  name:'Baby Jeeters Pre Rolls',            price:'$ 280.000',  cat:'Smoke',       outOfStock:false, onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/08/JUICYAFJAFS-10-300x300.png',         link:'https://ozhtimes.co/product/baby-jeeters-pre-rolls/'          },
+      { id:5,  name:'Baked Bros Gummies 300mg',          price:'$ 80.000',   cat:'Edibles',     outOfStock:false, onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/07/1-1-300x300.png',                    link:'https://ozhtimes.co/product/baked-bros-gummies-300mg/'        },
+      { id:6,  name:'BAKRS Diamonds Pre Rolls',          price:'$ 180.000',  cat:'Smoke',       outOfStock:true,  onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/10/PEELERZ-5-300x300.png',              link:'https://ozhtimes.co/product/bakrs-diamonds-pre-rolls/'        },
+      { id:7,  name:'BAKRS Triplets Pre Rolls',          price:'$ 140.000',  cat:'Smoke',       outOfStock:true,  onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/08/JUICYAFJAFS-11-300x300.png',         link:'https://ozhtimes.co/product/bakrs-triplets-pre-rolls/'        },
+      { id:8,  name:'Boutiq Disposable Vape',            price:'$ 250.000',  cat:'Disposables', outOfStock:true,  onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/06/3-300x300.png',                      link:'https://ozhtimes.co/product/boutiq-disposable-vape/'          },
+      { id:9,  name:'Boutiq Mini Pre Rolls',             price:'$ 240.000',  cat:'Smoke',       outOfStock:true,  onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/03/4-4-300x300.png',                    link:'https://ozhtimes.co/product/boutiq-mini-pre-rolls/'           },
+      { id:10, name:'Cannaaid Disposable Vape 2000mg',   price:'$ 150.000',  cat:'Disposables', outOfStock:false, onSale:true,  img:'https://ozhtimes.co/wp-content/uploads/2025/03/1-10-300x300.png',                   link:'https://ozhtimes.co/product/cannaaid-disposable-vape-2000mg/' },
+      { id:11, name:'Cannaisseur Oversized T-Shirt',     price:'$ 200.000',  cat:'Merch',       outOfStock:false, onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/02/1-6-300x300.png',                    link:'https://ozhtimes.co/product/cannaisseur/'                      },
+      { id:12, name:'Cellulose King Size Papers',        price:'$ 15.000',   cat:'Smoke',       outOfStock:false, onSale:false, img:'https://ozhtimes.co/wp-content/uploads/2025/03/CELLULOSE-300x300.png',               link:'https://ozhtimes.co/product/cellulose-king-size-lion-rollin-circus/' },
+    ],
+
+    // REAL articles from ozhtimes.co/blog
     articles: [
-      { id: 1, title: 'The Colombian Renaissance: Inside the New Wave of Artisan Growers', tag: 'Feature', date: 'March 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1603909223429-69bb7101f420?w=300&q=70&fit=crop' },
-      { id: 2, title: 'Terpene Profiles: Why Connoisseurs Are Moving Beyond THC Numbers', tag: 'Science', date: 'February 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=300&q=70&fit=crop' },
-      { id: 3, title: 'Berlin Underground: How Germany\'s Legalization Is Reshaping the Culture', tag: 'Global', date: 'January 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&q=70&fit=crop' },
-      { id: 4, title: 'Hash Rosin vs. Live Resin: The Extract War Is Over', tag: 'Extract', date: 'January 2026', url: 'https://ozhtimes.co', img: 'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=300&q=70&fit=crop' },
-    ],
-
-    storeItems: [
-      { id: 1, name: 'OZH Society Tee', price: '$45 USD', memberPrice: '$40 USD', exclusive: true, img: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=70&fit=crop' },
-      { id: 2, name: 'Raw Paper Pack', price: '$12 USD', memberPrice: '$10 USD', exclusive: false, img: 'https://images.unsplash.com/photo-1574781330855-d0db8cc6a79c?w=400&q=70&fit=crop' },
-      { id: 3, name: 'OZH Grinder Pro', price: '$65 USD', memberPrice: '$58 USD', exclusive: true, img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=70&fit=crop' },
-      { id: 4, name: 'Stash Box Obsidian', price: '$80 USD', memberPrice: '$72 USD', exclusive: true, img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=70&fit=crop' },
+      { id:1, title:'The Inverse Paradigm: Can Cannabis Decelerate Brain Aging?',                                       tag:'Science',   date:'Feb 2026',  url:'https://ozhtimes.co/cannabis-linked-to-increased-brain-volume-cognitive-health/', img:'https://ozhtimes.co/wp-content/uploads/2026/02/HAyqsevXoAAw8sq-scaled.jpg' },
+      { id:2, title:'Edibles: Dosage, Absorption & How to Consume',                                                     tag:'Education', date:'Jan 2026',  url:'https://ozhtimes.co/edibles-dosage-absorption-how-to-consume/',                   img:'https://images.unsplash.com/photo-1562592306-23a5ded8740b?w=300&q=70&fit=crop' },
+      { id:3, title:"Cannabis Clubs vs Coffeeshops: Europe's Market",                                                   tag:'Global',    date:'Dec 2025',  url:'https://ozhtimes.co/cannabis-clubs-vs-coffeeshops-europe-market/',               img:'https://ozhtimes.co/wp-content/uploads/2025/12/1.png' },
+      { id:4, title:"What's Puffco? The Apple of Vaporizers",                                                           tag:'Tech',      date:'Dec 2025',  url:'https://ozhtimes.co/puffco-apple-of-vaporizers-cannabis-technology/',            img:'https://ozhtimes.co/wp-content/uploads/2025/12/ChatGPT-Image-18-dic-2025-11_31_00.png' },
+      { id:5, title:'Less Alcohol, New Priorities: The Global Cultural Shift Redefining Younger Generations',           tag:'Culture',   date:'Dec 2025',  url:'https://ozhtimes.co/less-alcohol-global-cultural-shift-youth-consumption/',     img:'https://ozhtimes.co/wp-content/uploads/2025/12/ChatGPT-Image-17-dic-2025-16_32_08-1-874x1024.png' },
+      { id:6, title:'Trump Moves to Reclassify Marijuana with Executive Order',                                         tag:'Policy',    date:'Dec 2025',  url:'https://ozhtimes.co/trump-moves-to-reclassify-marijuana/',                       img:'https://ozhtimes.co/wp-content/uploads/2025/12/image-2.jpg' },
+      { id:7, title:'Colombia Opens the Door to Medicinal Cannabis Flower',                                             tag:'Colombia',  date:'Oct 2025',  url:'https://ozhtimes.co/colombia-opens-the-door-to-medicinal-cannabis-flower-innovation-access-challenges/', img:'https://ozhtimes.co/wp-content/uploads/2025/10/qwew.png' },
+      { id:8, title:'Herbal Vaporizers vs Joint: A Conscious Shift in Cannabis Consumption',                            tag:'Wellness',  date:'Oct 2025',  url:'https://ozhtimes.co/herbal-vaporizers-vs-joint-a-conscious-shift-in-cannabis-consumption/', img:'https://images.unsplash.com/photo-1518770660439-4636190af475?w=300&q=70&fit=crop' },
     ],
 
     chapterName() {
       const r = this.regions.find(x => x.code === this.selectedRegion);
       return r ? r.chapter : 'Colombia Chapter';
     },
-
     regionFlag() {
       const r = this.regions.find(x => x.code === this.selectedRegion);
       return r ? r.flag : '🇨🇴';
     },
-
     filteredProducts() {
-      if (this.activeCategory === 'All') return this.products;
-      return this.products.filter(p => p.cat === this.activeCategory);
+      return this.activeCategory === 'All' ? this.products : this.products.filter(p => p.cat === this.activeCategory);
+    },
+    filteredStoreProducts() {
+      return this.activeStoreCategory === 'All' ? this.storeProducts : this.storeProducts.filter(p => p.cat === this.activeStoreCategory);
+    },
+    memberPrice(priceStr) {
+      // Apply 10% member discount
+      const num = parseInt(priceStr.replace(/[^0-9]/g, ''));
+      if (!num) return priceStr;
+      const disc = Math.round(num * 0.9);
+      return '$ ' + disc.toLocaleString('es-CO');
     },
 
     init() {
-      this.$nextTick(() => {
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-      });
-    },
-
-    openInsight(producer) {
-      this.selectedProducer = producer;
-      this.modal = true;
       this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
     },
-
-    openProductModal(product) {
-      this.selectedProduct = product;
-      this.productModal = true;
+    openInsight(p) {
+      this.selectedProducer = p; this.modal = true;
       this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
     },
-
+    openProductModal(p) {
+      this.selectedProduct = p; this.productModal = true;
+      this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
+    },
     copyKey(code) {
-      navigator.clipboard.writeText(code).catch(() => {});
+      navigator.clipboard.writeText(code).catch(()=>{});
       this.copiedKey = code;
       this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
-      setTimeout(() => {
-        this.copiedKey = null;
-        this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
-      }, 2200);
+      setTimeout(() => { this.copiedKey = null; this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); }); }, 2200);
     },
-
     submitForm() {
       this.formError = '';
-      if (!this.form.name.trim()) { this.formError = 'Name is required.'; return; }
+      if (!this.form.name.trim())   { this.formError = 'Name is required.'; return; }
       if (!this.form.social.trim()) { this.formError = 'Instagram or Telegram handle is required.'; return; }
-      if (!this.form.role) { this.formError = 'Please select your role.'; return; }
-
+      if (!this.form.role)          { this.formError = 'Please select your role.'; return; }
       const msg = '🌿 *OZH Society Beta Request*\n\n'
         + '*Name:* ' + this.form.name + '\n'
         + '*Social:* ' + this.form.social + '\n'
@@ -1228,12 +882,9 @@ function app() {
         + '*Node:* ' + this.chapterName() + '\n'
         + '*Email:* ' + (this.form.email || '—') + '\n\n'
         + '🔑 Founder Member Status Pending';
-
       this.registered = true;
       this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
-      setTimeout(() => {
-        window.open('https://wa.me/573016934949?text=' + encodeURIComponent(msg), '_blank');
-      }, 600);
+      setTimeout(() => { window.open('https://wa.me/573016934949?text=' + encodeURIComponent(msg), '_blank'); }, 600);
     }
   }
 }
