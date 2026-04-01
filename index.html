@@ -218,40 +218,27 @@
     <!-- CONTENT -->
     <div class="flex-1 scroll-area">
 
-      <!-- ════════ NODES (EXPLORE) ════════ -->
+      <!-- ════════ EXPLORE ════════ -->
       <div x-show="tab==='explore'"
            x-transition:enter="transition ease-out duration-150"
            x-transition:enter-start="opacity-0 translate-y-1"
            x-transition:enter-end="opacity-100 translate-y-0">
 
-        <div class="px-5 pt-6 pb-4">
-          <div class="cinzel text-xs tracking-[0.35em] text-yellow-700 uppercase mb-1">Global Network</div>
-          <h2 class="cinzel font-bold text-2xl text-white mb-1">OZH Nodes</h2>
-          <p class="text-white/35 text-xs mont">Select a node to find verified vendors &amp; connoisseurs near you.</p>
-        </div>
-
-        <!-- Node cards — each opens the node detail -->
-        <div class="px-5 space-y-3 pb-4">
-          <template x-for="r in regions" :key="r.code">
-            <div @click="openNode(r.code)"
-                 class="glass rounded-2xl p-4 flex items-center gap-4 cursor-pointer active:scale-95 transition-transform"
-                 :style="selectedRegion===r.code ? 'border-color:rgba(212,175,55,0.4);background:rgba(212,175,55,0.05);' : 'border-color:rgba(255,255,255,0.07);'">
-              <div class="text-3xl leading-none shrink-0" x-text="r.flag"></div>
-              <div class="flex-1 min-w-0">
-                <div class="cinzel font-bold text-sm text-white" x-text="r.chapter"></div>
-                <div class="text-white/35 text-xs mont mt-0.5" x-text="r.nodeStats"></div>
-              </div>
-              <div class="flex items-center gap-2 shrink-0">
-                <div class="w-2 h-2 rounded-full" :class="r.active ? 'gold-pulse' : ''" :style="r.active ? 'background:#D4AF37;' : 'background:rgba(255,255,255,0.15);'"></div>
-                <i data-lucide="chevron-right" class="w-4 h-4 text-white/25" style="stroke-width:1.5;"></i>
-              </div>
-            </div>
-          </template>
-        </div>
-
-        <!-- Global stats -->
-        <div class="px-5 mb-6">
-          <div class="glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer">
+        <!-- Hero -->
+        <div class="px-5 pt-6 pb-8">
+          <div class="fade-1 text-center mb-6">
+            <div class="cinzel text-xs tracking-[0.35em] text-yellow-700 uppercase mb-2" x-text="chapterName() + ' · Est. 2026'"></div>
+            <h1 class="cinzel font-black text-[1.9rem] leading-tight mb-3">
+              <span class="text-gold-grad">A Different Way</span><br/>
+              <span class="text-white">to See the Plant.</span>
+            </h1>
+            <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">The world's most innovative cannabis community. Producers, connoisseurs, culture.</p>
+          </div>
+          <div class="fade-2 flex justify-center gap-3 mb-8">
+            <button @click="tab='register'" class="btn-gold text-xs px-6 py-3 rounded-full">Get Access</button>
+            <button @click="tab='society'" class="btn-outline text-xs px-6 py-3 rounded-full">Society</button>
+          </div>
+          <div class="fade-3 glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer">
             <div>
               <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">47</div>
               <div class="text-white/30 text-xs mont mt-0.5">Vendors</div>
@@ -265,6 +252,32 @@
               <div class="text-white/30 text-xs mont mt-0.5">Nodes</div>
             </div>
           </div>
+        </div>
+
+        <div class="gold-line mx-5 mb-5"></div>
+
+        <!-- Global Nodes section -->
+        <div class="px-5 mb-4 flex items-center justify-between">
+          <span class="cinzel text-xs font-semibold tracking-[0.2em] uppercase" style="color:#D4AF37;">Global Nodes</span>
+          <span class="text-white/30 text-xs mont">Tap to explore</span>
+        </div>
+
+        <div class="px-5 space-y-3 pb-6">
+          <template x-for="r in regions" :key="r.code">
+            <div @click="openNode(r.code)"
+                 class="glass rounded-2xl p-4 flex items-center gap-4 cursor-pointer active:scale-95 transition-transform"
+                 :style="selectedRegion===r.code ? 'border-color:rgba(212,175,55,0.4);background:rgba(212,175,55,0.05);' : 'border-color:rgba(255,255,255,0.07);'">
+              <div class="text-3xl leading-none shrink-0" x-text="r.flag"></div>
+              <div class="flex-1 min-w-0">
+                <div class="cinzel font-bold text-sm text-white" x-text="r.chapter"></div>
+                <div class="text-white/35 text-xs mont mt-0.5 clamp-1" x-text="r.nodeStats"></div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <div class="w-2 h-2 rounded-full" :class="r.active ? 'gold-pulse' : ''" :style="r.active ? 'background:#D4AF37;' : 'background:rgba(255,255,255,0.15);'"></div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-white/25" style="stroke-width:1.5;"></i>
+              </div>
+            </div>
+          </template>
         </div>
       </div>
 
@@ -836,7 +849,7 @@ function app() {
       { tab: 'insights', icon: 'newspaper',    label: 'Insights' },
       { tab: 'store',    icon: 'tag',          label: 'Store'    },
       { tab: 'market',   icon: 'shopping-bag', label: 'Market'   },
-      { tab: 'explore',  icon: 'map-pin',      label: 'Nodes'    },
+      { tab: 'explore',  icon: 'compass',      label: 'Explore'  },
       { tab: 'society',  icon: 'users',        label: 'Society'  },
     ],
 
