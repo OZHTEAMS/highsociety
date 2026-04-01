@@ -130,44 +130,45 @@
   </div>
 
   <!-- ══════════════════════════════════
-       ONBOARDING — NODE SELECT
+       WELCOME SCREEN
   ══════════════════════════════════ -->
   <div x-show="!regionSelected"
-       x-transition:leave="transition ease-in duration-300"
+       x-transition:leave="transition ease-in duration-400"
        x-transition:leave-start="opacity-100"
        x-transition:leave-end="opacity-0"
-       class="fixed inset-0 z-[200] flex flex-col items-center justify-center px-6"
+       class="fixed inset-0 z-[200] flex flex-col items-center justify-center px-8"
        style="background:#000;">
-    <div class="text-center max-w-xs w-full">
-      <div class="float mb-8">
+
+    <!-- Ambient glow -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div style="position:absolute;top:30%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 65%);filter:blur(40px);"></div>
+    </div>
+
+    <div class="relative text-center w-full max-w-xs">
+      <!-- Logo -->
+      <div class="float mb-10">
         <img src="https://storage.googleapis.com/runable-templates/cli-uploads%2Fvh80YRTZOVHDttRuQ2jpRecoESUZTjmp%2FCp2pWb7y221q7PipbgZ9A%2F1_(1)_7VA6I3.png"
-             alt="OZH" class="h-12 mx-auto" style="mix-blend-mode:screen;"/>
+             alt="OZH" class="h-14 mx-auto" style="mix-blend-mode:screen;"/>
       </div>
-      <div class="gold-line mb-5"></div>
-      <div class="cinzel text-xs tracking-[0.4em] text-yellow-600 uppercase mb-2 fade-1">Global Society</div>
-      <h1 class="cinzel font-black text-[1.9rem] text-white leading-tight mb-2 fade-2">Select Your<br/><span class="text-gold-grad">Node</span></h1>
-      <p class="text-white/35 text-xs mont leading-relaxed mb-7 fade-3">The world's most innovative cannabis community.</p>
-      <div class="grid grid-cols-3 gap-2 mb-4 fade-3">
-        <template x-for="r in regions" :key="r.code">
-          <button @click="selectedRegion = r.code"
-            class="flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl transition-all duration-200"
-            :style="selectedRegion===r.code
-              ? 'background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.45);box-shadow:0 0 16px rgba(212,175,55,0.15);'
-              : 'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);'">
-            <span class="text-2xl" x-text="r.flag"></span>
-            <span class="cinzel text-xs tracking-widest font-bold" :class="selectedRegion===r.code?'text-yellow-400':'text-white/35'" x-text="r.code"></span>
-          </button>
-        </template>
-      </div>
-      <div x-show="selectedRegion" x-transition class="glass-gold rounded-xl px-4 py-2.5 mb-5 text-center fade-4">
-        <span class="cinzel text-yellow-400 text-xs tracking-widest" x-text="'Localizing nodes for ' + chapterName() + '...'"></span>
-      </div>
-      <button @click="selectedRegion && (regionSelected=true)"
-        class="btn-gold w-full py-4 text-xs tracking-widest rounded-xl fade-4"
-        :class="selectedRegion?'opacity-100':'opacity-30 pointer-events-none'">
-        Enter Society
+
+      <!-- Gold line -->
+      <div class="gold-line mb-10"></div>
+
+      <!-- Welcome text -->
+      <div class="cinzel text-xs tracking-[0.45em] uppercase mb-4 fade-1" style="color:rgba(212,175,55,0.5);">OZH Society</div>
+      <h1 class="cinzel font-black leading-[1.1] mb-3 fade-2" style="font-size:2.6rem;color:#fff;letter-spacing:0.02em;">
+        Welcome<br/><span class="text-gold-grad">Cannaisseur</span>
+      </h1>
+
+      <!-- Gold line -->
+      <div class="gold-line mt-8 mb-10"></div>
+
+      <!-- CTA -->
+      <button @click="regionSelected = true"
+        class="btn-gold w-full py-4 rounded-full fade-3"
+        style="font-size:0.7rem;letter-spacing:0.25em;">
+        ENTER THE SOCIETY
       </button>
-      <div class="gold-line mt-5"></div>
     </div>
   </div>
 
@@ -840,6 +841,7 @@ function app() {
     formError: '',
     copiedKey: null,
     regionSelected: false,
+    // welcome screen shows once
     selectedRegion: 'CO',
     activeCategory: 'All',
     activeStoreCategory: 'All',
