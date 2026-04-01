@@ -218,33 +218,47 @@
     <!-- CONTENT -->
     <div class="flex-1 scroll-area">
 
-      <!-- ════════ EXPLORE ════════ -->
+      <!-- ════════ NODES (EXPLORE) ════════ -->
       <div x-show="tab==='explore'"
            x-transition:enter="transition ease-out duration-150"
            x-transition:enter-start="opacity-0 translate-y-1"
            x-transition:enter-end="opacity-100 translate-y-0">
 
-        <div class="px-5 pt-6 pb-8">
-          <div class="fade-1 text-center mb-6">
-            <div class="cinzel text-xs tracking-[0.35em] text-yellow-700 uppercase mb-2" x-text="chapterName() + ' · Est. 2026'"></div>
-            <h1 class="cinzel font-black text-[1.9rem] leading-tight mb-3">
-              <span class="text-gold-grad">A Different Way</span><br/>
-              <span class="text-white">to See the Plant.</span>
-            </h1>
-            <p class="text-white/40 text-sm mont leading-relaxed max-w-xs mx-auto">The world's most innovative cannabis community. Producers, connoisseurs, culture.</p>
-          </div>
-          <div class="fade-2 flex justify-center gap-3 mb-8">
-            <button @click="tab='register'" class="btn-gold text-xs px-6 py-3 rounded-full">Get Access</button>
-            <button @click="tab='society'" class="btn-outline text-xs px-6 py-3 rounded-full">Society</button>
-          </div>
-          <div class="fade-3 glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer">
+        <div class="px-5 pt-6 pb-4">
+          <div class="cinzel text-xs tracking-[0.35em] text-yellow-700 uppercase mb-1">Global Network</div>
+          <h2 class="cinzel font-bold text-2xl text-white mb-1">OZH Nodes</h2>
+          <p class="text-white/35 text-xs mont">Select a node to find verified vendors &amp; connoisseurs near you.</p>
+        </div>
+
+        <!-- Node cards — each opens the node detail -->
+        <div class="px-5 space-y-3 pb-4">
+          <template x-for="r in regions" :key="r.code">
+            <div @click="openNode(r.code)"
+                 class="glass rounded-2xl p-4 flex items-center gap-4 cursor-pointer active:scale-95 transition-transform"
+                 :style="selectedRegion===r.code ? 'border-color:rgba(212,175,55,0.4);background:rgba(212,175,55,0.05);' : 'border-color:rgba(255,255,255,0.07);'">
+              <div class="text-3xl leading-none shrink-0" x-text="r.flag"></div>
+              <div class="flex-1 min-w-0">
+                <div class="cinzel font-bold text-sm text-white" x-text="r.chapter"></div>
+                <div class="text-white/35 text-xs mont mt-0.5" x-text="r.nodeStats"></div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0">
+                <div class="w-2 h-2 rounded-full" :class="r.active ? 'gold-pulse' : ''" :style="r.active ? 'background:#D4AF37;' : 'background:rgba(255,255,255,0.15);'"></div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-white/25" style="stroke-width:1.5;"></i>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- Global stats -->
+        <div class="px-5 mb-6">
+          <div class="glass rounded-2xl p-4 grid grid-cols-3 gap-2 text-center shimmer">
             <div>
               <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">47</div>
-              <div class="text-white/30 text-xs mont mt-0.5">Producers</div>
+              <div class="text-white/30 text-xs mont mt-0.5">Vendors</div>
             </div>
             <div style="border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06);">
-              <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">66</div>
-              <div class="text-white/30 text-xs mont mt-0.5">Products</div>
+              <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">312</div>
+              <div class="text-white/30 text-xs mont mt-0.5">Connoisseurs</div>
             </div>
             <div>
               <div class="cinzel font-bold text-2xl" style="color:#D4AF37;">5</div>
@@ -252,34 +266,90 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="gold-line mx-5 mb-5"></div>
-        <div class="px-5 mb-4 flex items-center justify-between">
-          <span class="cinzel text-xs font-semibold tracking-[0.2em] uppercase" style="color:#D4AF37;">Verified Producers</span>
-          <span class="text-white/30 text-xs mont">Small Batch · Certified</span>
-        </div>
-        <div class="px-5 space-y-4 pb-6">
-          <template x-for="p in producers" :key="p.id">
-            <div class="glass rounded-2xl overflow-hidden" style="border-color:rgba(255,255,255,0.07);">
-              <div class="relative h-48 overflow-hidden">
-                <img :src="p.img" :alt="p.strain" loading="lazy" class="w-full h-full object-cover" style="filter:saturate(0.5) brightness(0.75);"/>
-                <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,transparent 55%);"></div>
-                <div class="absolute top-3 left-3 flex gap-2">
-                  <span class="badge">🇨🇴 Origin</span>
-                  <span x-show="p.verified" class="badge-green">✓ Verified</span>
+      <!-- ════════ NODE DETAIL (drawer overlay) ════════ -->
+      <div x-show="nodeOpen"
+           x-transition:enter="transition ease-out duration-200"
+           x-transition:enter-start="opacity-0"
+           x-transition:enter-end="opacity-100"
+           @click.self="nodeOpen=false"
+           class="fixed inset-0 z-[60] flex items-end justify-center"
+           style="background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);">
+        <div x-show="nodeOpen"
+             x-transition:enter="transition ease-out duration-280"
+             x-transition:enter-start="translate-y-full"
+             x-transition:enter-end="translate-y-0"
+             class="glass-modal w-full max-w-lg rounded-t-3xl p-6 pb-12 scroll-area"
+             style="max-height:88vh;">
+          <div class="w-10 h-1 rounded-full mx-auto mb-5" style="background:rgba(255,255,255,0.12);"></div>
+          <template x-if="activeNode">
+            <div>
+              <!-- Node header -->
+              <div class="flex items-center gap-3 mb-5">
+                <span class="text-4xl leading-none" x-text="activeNode.flag"></span>
+                <div>
+                  <div class="cinzel font-black text-xl text-white" x-text="activeNode.chapter"></div>
+                  <div class="text-white/35 text-xs mont" x-text="activeNode.nodeStats"></div>
                 </div>
-                <div class="absolute bottom-3 left-3">
-                  <div class="cinzel text-white font-bold text-lg leading-tight" x-text="p.strain"></div>
-                  <div class="text-white/45 text-xs mont" x-text="p.producer"></div>
+                <div class="ml-auto">
+                  <span x-show="activeNode.active" class="badge">● Live</span>
+                  <span x-show="!activeNode.active" class="badge-dark">Coming Soon</span>
                 </div>
               </div>
-              <div class="p-4">
-                <div class="flex gap-4 text-xs text-white/40 mont mb-3">
-                  <span>THC <span class="font-semibold" style="color:#D4AF37;" x-text="p.thc"></span></span>
-                  <span>CBD <span class="font-semibold" style="color:#D4AF37;" x-text="p.cbd"></span></span>
-                  <span>Type <span class="text-white/65 font-medium" x-text="p.type"></span></span>
+
+              <div class="gold-line mb-4"></div>
+
+              <!-- Vendors list -->
+              <div class="cinzel text-xs tracking-[0.2em] text-yellow-700 uppercase mb-3">Verified Vendors</div>
+              <div class="space-y-3 mb-5">
+                <template x-for="v in activeNode.vendors" :key="v.id">
+                  <div class="glass rounded-xl p-4 flex items-center gap-3" style="border-color:rgba(255,255,255,0.07);">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0 cinzel font-bold text-sm"
+                         style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.25);color:#D4AF37;"
+                         x-text="v.initials"></div>
+                    <div class="flex-1 min-w-0">
+                      <div class="cinzel text-white text-sm font-semibold" x-text="v.name"></div>
+                      <div class="text-white/35 text-xs mont mt-0.5 clamp-1" x-text="v.specialty"></div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 shrink-0">
+                      <span x-show="v.verified" class="badge-green">✓ Verified</span>
+                      <span class="text-white/25 mont" style="font-size:0.55rem;" x-text="v.distance"></span>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Connoisseurs -->
+              <div class="cinzel text-xs tracking-[0.2em] text-yellow-700 uppercase mb-3">Connoisseurs Nearby</div>
+              <div class="flex flex-wrap gap-2 mb-6">
+                <template x-for="c in activeNode.connoisseurs" :key="c">
+                  <div class="glass px-3 py-1.5 rounded-full flex items-center gap-1.5" style="border-color:rgba(255,255,255,0.07);">
+                    <div class="w-1.5 h-1.5 rounded-full" style="background:#D4AF37;"></div>
+                    <span class="text-white/60 text-xs mont" x-text="c"></span>
+                  </div>
+                </template>
+              </div>
+
+              <!-- CTA -->
+              <div x-show="activeNode.active" class="flex flex-col gap-3">
+                <a href="https://wa.me/573016934949" target="_blank"
+                   class="btn-wa w-full py-3.5 text-sm tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold rounded-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                  Connect via WhatsApp
+                </a>
+                <a href="https://t.me/ozhtimes" target="_blank"
+                   class="btn-tg w-full py-3 text-xs tracking-widest uppercase flex items-center justify-center gap-2 cinzel font-bold rounded-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                  Join Node Channel
+                </a>
+              </div>
+              <div x-show="!activeNode.active" class="text-center">
+                <div class="glass-gold rounded-xl p-4">
+                  <div class="cinzel text-xs font-bold tracking-wider mb-1" style="color:#D4AF37;">Node Launching Soon</div>
+                  <p class="text-white/40 text-xs mont">Be first. Join the waitlist via WhatsApp.</p>
+                  <a href="https://wa.me/573016934949" target="_blank" class="btn-gold inline-block mt-3 text-xs px-5 py-2 rounded-full">Join Waitlist</a>
                 </div>
-                <button @click="openInsight(p)" class="btn-outline w-full rounded-xl py-2.5 text-xs">View Insights →</button>
               </div>
             </div>
           </template>
@@ -748,7 +818,7 @@
 <script>
 function app() {
   return {
-    tab: 'explore',
+    tab: 'insights',
     modal: false,
     productModal: false,
     selectedProducer: null,
@@ -763,20 +833,45 @@ function app() {
     form: { name: '', social: '', role: '', email: '' },
 
     navItems: [
-      { tab: 'explore',  icon: 'compass',      label: 'Explore'  },
-      { tab: 'market',   icon: 'shopping-bag',  label: 'Market'   },
-      { tab: 'insights', icon: 'newspaper',     label: 'Insights' },
-      { tab: 'store',    icon: 'tag',           label: 'Store'    },
-      { tab: 'society',  icon: 'users',         label: 'Society'  },
+      { tab: 'insights', icon: 'newspaper',    label: 'Insights' },
+      { tab: 'store',    icon: 'tag',          label: 'Store'    },
+      { tab: 'explore',  icon: 'map-pin',      label: 'Nodes'    },
+      { tab: 'market',   icon: 'shopping-bag', label: 'Market'   },
+      { tab: 'society',  icon: 'users',        label: 'Society'  },
     ],
 
     regions: [
-      { code: 'CO', flag: '🇨🇴', chapter: 'Colombia Chapter' },
-      { code: 'ES', flag: '🇪🇸', chapter: 'Valencia Node'    },
-      { code: 'DE', flag: '🇩🇪', chapter: 'Berlin Edition'   },
-      { code: 'US', flag: '🇺🇸', chapter: 'New York Node'    },
-      { code: 'TH', flag: '🇹🇭', chapter: 'Bangkok Chapter'  },
+      { code: 'CO', flag: '🇨🇴', chapter: 'Colombia Chapter', active: true,  nodeStats: '47 vendors · 184 connoisseurs · Bogotá, Medellín, Cali',
+        vendors: [
+          { id:1, name:'Finca La Cumbre',       initials:'FL', specialty:'Indica artesanal · 2600m altitude · Sierra Nevada',   verified:true,  distance:'Bogotá' },
+          { id:2, name:'Cooperativa Verde',      initials:'CV', specialty:'Sativa Landrace · Andes Origin · Zero pesticides',    verified:true,  distance:'Medellín' },
+          { id:3, name:'Casa Cannábica',         initials:'CC', specialty:'Moonrocks · Premium concentrates · Limited batches',  verified:false, distance:'Medellín' },
+          { id:4, name:'El Herbolario',          initials:'EH', specialty:'CBD wellness · Tinctures · Small batch edibles',      verified:true,  distance:'Cali' },
+        ],
+        connoisseurs: ['@juan_verde','@420_co','@terpene_lord','@highsociety_co','@raizmedallo','@humo_bogota','@cannasseur_co','@verde_andes']
+      },
+      { code: 'ES', flag: '🇪🇸', chapter: 'Valencia Node',    active: true,  nodeStats: '12 vendors · 67 connoisseurs · Valencia, Barcelona, Madrid',
+        vendors: [
+          { id:1, name:'Club El Jardín',         initials:'EJ', specialty:'Cannabis social club · Indoor premium · Barcelona',   verified:true,  distance:'Barcelona' },
+          { id:2, name:'The Spanish Chapter',    initials:'SC', specialty:'Hash artesanal · Moroccan genetics · Valencia',       verified:true,  distance:'Valencia' },
+        ],
+        connoisseurs: ['@club_jardin_bcn','@hash_espana','@terpenes_es','@cannasseur_es','@el_node_es']
+      },
+      { code: 'DE', flag: '🇩🇪', chapter: 'Berlin Edition',   active: false, nodeStats: 'Coming 2026 · Berlin, Hamburg, Munich',
+        vendors: [],
+        connoisseurs: ['@ozh_berlin','@cannabis_de_2026']
+      },
+      { code: 'US', flag: '🇺🇸', chapter: 'New York Node',    active: false, nodeStats: 'Coming 2026 · NYC, LA, Miami',
+        vendors: [],
+        connoisseurs: ['@ozh_nyc','@society_us']
+      },
+      { code: 'TH', flag: '🇹🇭', chapter: 'Bangkok Chapter',  active: false, nodeStats: 'Coming 2026 · Bangkok, Phuket',
+        vendors: [],
+        connoisseurs: ['@ozh_bkk']
+      },
     ],
+    nodeOpen: false,
+    activeNode: null,
 
     categories: ['All', 'Flowers', 'Edibles', 'Extracts', 'Genetics'],
     storeCategories: ['All', 'Edibles', 'Disposables', 'Smoke', 'Extracts', 'Merch', 'Vapes'],
@@ -838,6 +933,11 @@ function app() {
     regionFlag() {
       const r = this.regions.find(x => x.code === this.selectedRegion);
       return r ? r.flag : '🇨🇴';
+    },
+    openNode(code) {
+      this.activeNode = this.regions.find(x => x.code === code) || null;
+      this.nodeOpen = true;
+      this.$nextTick(() => { if (typeof lucide !== 'undefined') lucide.createIcons(); });
     },
     filteredProducts() {
       return this.activeCategory === 'All' ? this.products : this.products.filter(p => p.cat === this.activeCategory);
